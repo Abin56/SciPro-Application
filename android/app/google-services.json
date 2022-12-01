@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "698549553325",
+    "firebase_url": "https://lepton-scipro-91560-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "lepton-scipro-91560",
+    "storage_bucket": "lepton-scipro-91560.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698549553325:android:ac70c4e8ba89471443de24",
+        "android_client_info": {
+          "package_name": "com.lepton.scipro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "698549553325-81q2a3hgovgqj72u647k12nfitvl67tc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lepton.scipro",
+            "certificate_hash": "9af7d80535b419e141a375b3dfa2dcb1b538be36"
+          }
+        },
+        {
+          "client_id": "698549553325-uvs45vim71lnp9q95oujooksk8sqeb5j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAV09g9NoS6NO32Car8HlLF12zLKuP8qpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "698549553325-uvs45vim71lnp9q95oujooksk8sqeb5j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
