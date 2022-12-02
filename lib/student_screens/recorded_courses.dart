@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:scipro/payment_RazorPay/payment_screen.dart';
-import 'package:scipro/student_screens/selected_courses.dart';
+import 'package:scipro/student_screens/selected_courses_Details.dart';
 import 'package:scipro/widgets/button_Container.dart';
 
 class RecordedCoursesListScreen extends StatelessWidget {
@@ -13,43 +13,52 @@ class RecordedCoursesListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 36, 44, 59),
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: Text('Select your plan'),
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(8),
           child: ListView.separated(
               itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    Get.to(SeleectedCourseDetail());
-                  },
-                  child: ButtonContainerWidget(
-                    curving: 30,
-                    colorindex: index,
-                    height: 200,
-                    width: double.infinity,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          listofRecordedCourses[index],
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14),
-                        ),
-                        Text(
-                          listofRecordedPrices[index],
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14),
-                        )
-                      ],
+                return Column(
+                  children: [
+                    SizedBox(
+                      height: 10.h,
                     ),
-                  ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(SeleectedCourseDetail());
+                      },
+                      child: ButtonContainerWidget(
+                        curving: 30,
+                        colorindex: index,
+                        height: 200,
+                        width: double.infinity,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              listofRecordedCourses[index],
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14),
+                            ),
+                            Text(
+                              listofRecordedPrices[index],
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 );
               },
               separatorBuilder: (context, index) {

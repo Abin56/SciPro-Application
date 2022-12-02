@@ -16,13 +16,41 @@ class SeleectedCourseDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 36, 44, 59),
-      appBar: AppBar(
-        title: Text('Course Details'),
-      ),
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: ButtonContainerWidget(
+                    curving: 10,
+                    colorindex: 0,
+                    height: 40.h,
+                    width: 40.w,
+                    child: const Center(
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 30.w,
+                ),
+                Text(
+                  "Course Details",
+                  style: GoogleFonts.montserrat(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700),
+                ),
+              ],
+            ),
             ButtonContainerWidget(
               curving: 30,
               colorindex: 0,
@@ -75,7 +103,6 @@ class SeleectedCourseDetail extends StatelessWidget {
                         )
                       ],
                     ),
-                    
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
