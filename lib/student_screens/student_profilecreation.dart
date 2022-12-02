@@ -129,6 +129,8 @@ class _FacultyHomePageState extends State<StudentProfleCreation> {
                 TextField(
                   controller: email,
                   decoration: InputDecoration(
+                      isDense: true,
+                      filled: true,
                       hintText: "Email",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20))),

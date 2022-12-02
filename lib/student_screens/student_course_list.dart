@@ -11,6 +11,7 @@ import 'package:scipro/student_screens/pages/live_Courses.dart';
 import 'package:scipro/student_screens/pages/live_Mock_test.dart';
 import 'package:scipro/student_screens/pages/record_Courses.dart';
 import 'package:scipro/student_screens/pages/study_materials_screen.dart';
+import 'package:scipro/student_screens/recorded_courses.dart';
 import 'package:scipro/video_player/videoplayer_firebase.dart';
 import 'package:scipro/widgets/button_Container.dart';
 
@@ -28,9 +29,12 @@ class StudentCourseListScreen extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: ListView(
             children: [
-              LottieBuilder.asset('assets/images/studentlottie.json'),
+              LottieBuilder.asset(
+                'assets/images/studentlottie.json',
+                height: 320.h,
+              ),
               SizedBox(
-                height: 700.h,
+                height: 500,
                 child: ListView.separated(
                     itemBuilder: (context, index) {
                       return GestureDetector(
@@ -76,7 +80,7 @@ List<String> studentCourseList = [
       'Offline Mock Test',
 ];
 List screens = const [
-  RecordedvideosPlayList(),
+  RecordedCoursesListScreen(),
   LiveClassRoom(),
   HybridCourses(),
   FacultieScreen(),

@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:scipro/screens/home_screen.dart';
 import 'package:scipro/screens/my_home_page.dart';
+import 'package:scipro/signin/student_faclty_profilecreation.dart';
 
 class GoogleSiginController {
   final FirebaseAuth firebase = FirebaseAuth.instance;
@@ -55,7 +56,7 @@ class GoogleSiginController {
           'phoneNumber': value.user!.phoneNumber,
           'photoURL': value.user!.photoURL,
           'isBlocked': false,
-        }).then((value) => Get.offAll(const HomeScreen()));
+        }).then((value) => Get.offAll(const StudentandFacultyCreationPage()));
       });
       //   .then((value) async {
       // final UserModel data = UserModel(

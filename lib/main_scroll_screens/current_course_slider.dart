@@ -34,7 +34,7 @@ class _CurrentCourseSliderState extends State<CurrentCourseSlider> {
   Widget build(BuildContext context) {
     return SizedBox(
       //color: Color(0xFFB3E5FC),
-      height: 401.h,
+      height: 410.h,
       child: Column(
         children: [
           Container(
