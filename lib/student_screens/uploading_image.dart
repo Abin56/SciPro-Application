@@ -9,16 +9,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:scipro/faculty_screens/faculty_home_screen.dart';
+import 'package:scipro/student_screens/student_profilecreation.dart';
 
-class UploadImageforFaculty extends StatefulWidget {
-  UploadImageforFaculty({super.key});
+class UploadImageForStudent extends StatefulWidget {
+  UploadImageForStudent({super.key});
 
   @override
-  State<UploadImageforFaculty> createState() =>
-      _UploadImageforFacultyState();
+  State<UploadImageForStudent> createState() => _UploadImageForStudentState();
 }
 
-class _UploadImageforFacultyState extends State<UploadImageforFaculty> {
+class _UploadImageForStudentState extends State<UploadImageForStudent> {
   PlatformFile? pickeimagefile;
   UploadTask? uploadTask;
 
@@ -52,12 +52,12 @@ class _UploadImageforFacultyState extends State<UploadImageforFaculty> {
                       ),
                       child: Column(
                         children: [
-                           SizedBox(height: 20.h),
+                          SizedBox(height: 20.h),
                           const Text(
                             'Upload Image!',
                             style: TextStyle(fontSize: 32),
                           ),
-                           SizedBox(height: 20.h),
+                          SizedBox(height: 20.h),
                           Container(
                             height: 200.h,
                             // color: Colors.amber,
@@ -80,7 +80,7 @@ class _UploadImageforFacultyState extends State<UploadImageforFaculty> {
                                     ),
                                   ),
                           ),
-                           SizedBox(height: 30.h),
+                          SizedBox(height: 30.h),
                           Container(
                             width: 250,
                             decoration: BoxDecoration(
@@ -188,7 +188,7 @@ class _UploadImageforFacultyState extends State<UploadImageforFaculty> {
     final snapshot = await uploadTask!.whenComplete(() {});
     final urlDownload = await snapshot.ref.getDownloadURL();
     // Get.off(AddOfferProducts(imagepath: urlDownload));
-    Get.off(FacultyHomePage(imagePath: urlDownload,));
+    Get.off(StudentProfleCreation(imagePath: urlDownload));
     log("Download Link : $urlDownload");
     setState(() {
       uploadTask = null;

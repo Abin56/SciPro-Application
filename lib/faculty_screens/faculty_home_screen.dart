@@ -8,6 +8,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
+import 'package:scipro/faculty_screens/faculty_login_id_screen.dart';
 import 'package:scipro/utils/tab_bar_contents.dart';
 
 class FacultyHomePage extends StatefulWidget {
@@ -64,11 +65,11 @@ class _FacultyHomePageState extends State<FacultyHomePage> {
     TextEditingController bankaccountnumber = TextEditingController();
     TextEditingController bank = TextEditingController();
 
-    // final userId = FirebaseAuth.instance.currentUser!.uid;
-    final userId = '';
+    final userId = FirebaseAuth.instance.currentUser!.uid;
+
     CollectionReference ref =
         FirebaseFirestore.instance.collection('Faculties');
-    String imageUrl = "";
+
     double progress = 0.0;
 
     uploadFile() async {
@@ -207,7 +208,7 @@ class _FacultyHomePageState extends State<FacultyHomePage> {
                     onPressed: () {
                       //uploadFile();
                       ref.doc(userId).set({
-                        'imageUrl': imageUrl,
+                        'imageUrl': widget.imagePath,
                         'Name': name.text,
                         'place': place.text,
                         'subject': subject.text,
@@ -218,9 +219,10 @@ class _FacultyHomePageState extends State<FacultyHomePage> {
                         'ifsc': ifsc.text,
                         'aadhar': aadharnumber.text,
                       }).whenComplete(() {
-                        // Navigator.pushReplacement(
-                        //     context, MaterialPageRoute(
-                        //     builder: (_) => const Login()));
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) =>  FacultyLoginIdScreen()));
                       });
                     },
                     child: const Text("save",

@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:scipro/model_classes/v_model.dart';
 import 'package:scipro/screens/home_screen.dart';
@@ -23,27 +26,38 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: StudentandFacultyCreationPage(),
-      // home: StreamBuilder(
-      //   stream: AuthMethods().authChanges,
-      //   builder: (context, snapshot) {
-      //     if(snapshot.connectionState == ConnectionState.waiting) {
-      //       return const Center (
-      //         child: CircularProgressIndicator(),
-      //       );
-      //     }
-      //     if(snapshot.hasData) {
-      //       return const StudentWaitingRoom();
-      //     }
-      //     return const Gsignin();
-      //   },
-      // ),
+    return ScreenUtilInit(
+      designSize: const Size(384.0, 805.3333333333334),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return GetMaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          debugShowCheckedModeBanner: false,
+          // home: StudentandFacultyCreationPage(),
+          home: StreamBuilder(
+            stream: AuthMethods().authChanges,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                double width = MediaQuery.of(context).size.width;
+                double height = MediaQuery.of(context).size.height;
+                log('Width${width.toString()}');
+                log('Height${height.toString()}');
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if (snapshot.hasData) {
+                return const StudentandFacultyCreationPage();
+              }
+              return const Gsignin();
+            },
+          ),
+        );
+      },
     );
   }
 }

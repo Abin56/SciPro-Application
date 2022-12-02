@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:scipro/signin/google_Auth.dart';
 
 import '../methods/auth_methods.dart';
 import '../widgets/custom_button.dart';
-
 
 class Gsignin extends StatefulWidget {
   const Gsignin({Key? key}) : super(key: key);
@@ -28,15 +29,17 @@ class _GsigninState extends State<Gsignin> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 38.0),
-            child: Image.asset('assets/SCIPRO.png'),
+            child: Image.asset('assets/images/SCIPRO.png'),
           ),
           CustomButton(
             text: 'Google Sign In',
             onPressed: () async {
-              bool res = await _authMethods.signInWithGoogle(context);
-              if (res) {
-                Navigator.pushNamed(context, '/login');
-              }
+              await GoogleSiginController().googleLogin(context);
+              // bool res = await _authMethods.signInWithGoogle(context);
+              // if (res) {
+              //   Get.offAll(Stud)
+              // }
+              // Get.offAll(stu)
             },
           ),
         ],
