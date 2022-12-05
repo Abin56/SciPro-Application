@@ -9,8 +9,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:scipro/payment_RazorPay/payment_screen.dart';
 import 'package:scipro/widgets/button_Container.dart';
 
-class SeleectedCourseDetail extends StatelessWidget {
-  const SeleectedCourseDetail({super.key});
+class RecordCourseDetail extends StatelessWidget {
+  const RecordCourseDetail({super.key});
 
   @override
   Widget build(BuildContext context) {

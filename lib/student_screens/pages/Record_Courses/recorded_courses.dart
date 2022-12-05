@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:scipro/payment_RazorPay/payment_screen.dart';
-import 'package:scipro/student_screens/selected_courses_Details.dart';
+import 'package:scipro/student_screens/pages/Record_Courses/recorded_courses_Details.dart';
 import 'package:scipro/widgets/button_Container.dart';
 
 class RecordedCoursesListScreen extends StatelessWidget {
@@ -30,7 +30,7 @@ class RecordedCoursesListScreen extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.to(SeleectedCourseDetail());
+                        Get.to(RecordCourseDetail());
                       },
                       child: ButtonContainerWidget(
                         curving: 30,
