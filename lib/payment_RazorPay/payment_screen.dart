@@ -1,6 +1,7 @@
 // ignore_for_file: sort_child_properties_last, must_be_immutable
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -22,6 +23,9 @@ class CheckOutScreen extends StatefulWidget {
 }
 
 class _CheckOutScreenState extends State<CheckOutScreen> {
+  bool payment = false;
+
+  final userId = FirebaseAuth.instance.currentUser!.uid;
   final _razorpay = Razorpay();
   @override
   void initState() {
@@ -32,8 +36,12 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
     super.initState();
   }
 
-  void _handlePaymentSuccess(PaymentSuccessResponse response) {
-    // afterPaymentSucess();
+  void _handlePaymentSuccess(PaymentSuccessResponse response) async {
+    // After paymentSuccessFull section>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
+    await FirebaseFirestore.instance
+        .collection("StudentsProfile")
+        .doc(userId)
+        .update({"payment": "paymentSuccessfull"});
 
     log("PaymentDone!!!!!!!!");
   }
@@ -198,10 +206,10 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                     // Get.off(PaymentScreen());
                     //
                     var options = {
-                      'key': 'rzp_test_4H63BqbBLQlmNQ',
+                      'key': 'rzp_live_WkqZiZtSI6LGQ9',
                       //amount will be multiple of 100
                       'amount': paymentPrice.toString(), //so its pay 500
-                      'name': 'Binoj KUMAR V C',
+                      'name': '',
                       'description': 'SciPro',
                       'timeout': 300, // in seconds
                       'prefill': {

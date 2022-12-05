@@ -45,6 +45,7 @@ class _FacultyHomePageState extends State<StudentProfleCreation> {
     TextEditingController subject = TextEditingController();
     TextEditingController email = TextEditingController();
     TextEditingController mobilenumber = TextEditingController();
+    bool payment = false;
 
     final userId = FirebaseAuth.instance.currentUser!.uid;
 
@@ -70,6 +71,8 @@ class _FacultyHomePageState extends State<StudentProfleCreation> {
             'subject': subject.text,
             'email': email.text,
             'mobilenumber': mobilenumber.text,
+            
+            
           }));
       //print(url);
     }
@@ -158,6 +161,7 @@ class _FacultyHomePageState extends State<StudentProfleCreation> {
                         'subject': subject.text,
                         'email': email.text,
                         'mobilenumber': mobilenumber.text,
+                        
                       }).whenComplete(() {
                         Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: (_) => HomeScreen()));
