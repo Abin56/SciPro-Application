@@ -20,6 +20,7 @@ import '../widgets/custom_button.dart';
 
 class MyHomePage extends StatefulWidget {
   var courseID = '';
+  var liveCourseID = '';
   MyHomePage({Key? key}) : super(key: key);
 
   @override
@@ -96,8 +97,8 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void checkUser() async {
-    log('Callling the function');
+  void checkUserPayment() async {
+    log('Callling the UserPAmentModel');
     final user = FirebaseAuth.instance.currentUser!.uid;
     var checking = await FirebaseFirestore.instance
         .collection('UserPaymentModel')
@@ -110,9 +111,24 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void checkLivePayment() async {
+    log('Callling the LiveCoursePaymentModel_live');
+    final user = FirebaseAuth.instance.currentUser!.uid;
+    var checkingLive = await FirebaseFirestore.instance
+        .collection('LiveCoursePaymentModel_live')
+        .doc(user)
+        .get();
+    log('Data loading >>>>>>>>>>>>>>>>>>>..${checkingLive}');
+    setState(() {
+      widget.liveCourseID = checkingLive.data()!['courseName'];
+      log('Data loading >>>>>>>>>>>>>>>>>>>..${widget.liveCourseID}');
+    });
+  }
+
   @override
   void initState() {
-    checkUser();
+    checkLivePayment();
+    checkUserPayment();
     _scrollController.addListener(_scrollListner);
     nameController = _authMethods.user.displayName!;
     super.initState();
@@ -196,15 +212,33 @@ class _MyHomePageState extends State<MyHomePage> {
                         ],
                       ),
                     ),
-                    Container(
-                      child: widget.courseID.isEmpty
-                          ? const Text('')
-                          : CustomButton(
-                              text: 'Start your journy',
-                              onPressed: () async {
-                                Get.to(UserSelectingCourselisting());
-                              }),
-                    ),
+                    Builder(builder: (context) {
+                      if (widget.courseID.isNotEmpty) {
+                        return CustomButton(
+                            text: 'Start your journy',
+                            onPressed: () async {
+                              Get.to(UserSelectingCourselisting());
+                            });
+                      } else if (widget.liveCourseID.isNotEmpty) {
+                        return CustomButton(
+                            text: 'Start your journy',
+                            onPressed: () async {
+                              Get.to(UserSelectingCourselisting());
+                            });
+                      } else if (widget.liveCourseID.isNotEmpty &&
+                          widget.courseID.isNotEmpty) {
+                        return CustomButton(
+                            text: 'Start your journy',
+                            onPressed: () async {
+                              Get.to(UserSelectingCourselisting());
+                            });
+                      } else if (widget.liveCourseID.isEmpty &&
+                          widget.courseID.isEmpty) {
+                        return Text('');
+                      } else {
+                        return Text('');
+                      }
+                    }),
                   ],
                 ),
               ),

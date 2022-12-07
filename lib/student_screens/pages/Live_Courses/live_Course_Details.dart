@@ -11,6 +11,8 @@ import 'package:intl/intl.dart';
 import 'package:scipro/payment_RazorPay/payment_screen.dart';
 import 'package:scipro/widgets/button_Container.dart';
 
+import '../../../payment_RazorPay/livecourse_payment.dart';
+
 var arCourseID = "";
 
 var arec_courseID = "";
@@ -393,7 +395,7 @@ class _LiveCourseDetailScreenState extends State<LiveCourseDetailScreen> {
               ),
               GestureDetector(
                 onTap: () async {
-                  Get.to(CheckOutScreen(
+                  Get.to(LiveCoursePayment(
                       courseName: _courseTitle,
                       totalPrice: 3999.00,
                       courseID: widget.courseID));

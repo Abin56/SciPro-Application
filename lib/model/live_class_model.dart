@@ -43,16 +43,14 @@ class LiveCoursePaymentModel {
 }
 
 class LivePaymentStatusAddToFireBase {
-
-
-
   final currentUser = FirebaseAuth.instance.currentUser!.uid;
-  Future livePaymentModelController(LiveCoursePaymentModel productModel,String randomNumner) async {
+  Future livePaymentModelController(
+      LiveCoursePaymentModel productModel, String randomNumner) async {
     try {
       final firebase = FirebaseFirestore.instance;
       final doc = firebase
           .collection("LiveCoursePaymentModel_live")
-          .doc(randomNumner)
+          .doc(currentUser)
           .set(productModel.toJson())
           .then((value) => Get.to(HomeScreen()));
     } on FirebaseException catch (e) {
