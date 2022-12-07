@@ -7,7 +7,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:scipro/faculty_screens/sample.dart';
+
 import 'package:scipro/widgets/button_Container.dart';
 
 class FacultyLoginIdScreen extends StatefulWidget {
@@ -57,7 +57,7 @@ class _FacultyLoginIdScreenState extends State<FacultyLoginIdScreen> {
               onTap: () async {
                 if (idContoller.text.trim() == _facultyId &&
                     passwordContoller.text.trim() == _password) {
-                  Get.offAll(SamplePage());
+                  // Get.offAll(SamplePage());
                 } else {
                   log('Wrong password');
                 }

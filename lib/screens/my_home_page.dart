@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,7 +10,8 @@ import 'package:scipro/main_scroll_screens/current_course_slider.dart';
 import 'package:scipro/main_scroll_screens/current_courses_mainpage.dart';
 import 'package:scipro/main_scroll_screens/industry_oriented_final.dart';
 import 'package:scipro/main_scroll_screens/our_popular_courses.dart';
-import 'package:scipro/student_screens/student_course_list.dart';
+import 'package:scipro/screens/listof_subscribe.dart';
+import 'package:scipro/student_screens/recorded_sub_course_list.dart';
 import 'package:scipro/utils/explore_drawer.dart';
 
 import '../methods/auth_methods.dart';
@@ -14,7 +19,8 @@ import '../utils/app_colors.dart';
 import '../widgets/custom_button.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  var courseID = '';
+  MyHomePage({Key? key}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -90,8 +96,23 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void checkUser() async {
+    log('Callling the function');
+    final user = FirebaseAuth.instance.currentUser!.uid;
+    var checking = await FirebaseFirestore.instance
+        .collection('UserPaymentModel')
+        .doc(user)
+        .get();
+    log('Data loading >>>>>>>>>>>>>>>>>>>..${checking}');
+    setState(() {
+      widget.courseID = checking.data()!['courseName'];
+      log('Data loading >>>>>>>>>>>>>>>>>>>..${widget.courseID}');
+    });
+  }
+
   @override
   void initState() {
+    checkUser();
     _scrollController.addListener(_scrollListner);
     nameController = _authMethods.user.displayName!;
     super.initState();
@@ -175,11 +196,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         ],
                       ),
                     ),
-                    CustomButton(
-                        text: 'Start your journy',
-                        onPressed: () async {
-                          Get.to(StudentCourseListScreen());
-                        }),
+                    Container(
+                      child: widget.courseID.isEmpty
+                          ? const Text('')
+                          : CustomButton(
+                              text: 'Start your journy',
+                              onPressed: () async {
+                                Get.to(UserSelectingCourselisting());
+                              }),
+                    ),
                   ],
                 ),
               ),

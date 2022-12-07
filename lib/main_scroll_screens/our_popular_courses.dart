@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
 import 'package:scipro/main_scroll_screens/popular_details.dart';
 import 'package:scipro/utils/app_colors.dart';
 
@@ -55,7 +56,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                           children: [
                             InkWell(
                               onTap: () {
-                                Get.to(PopularOnTapDetails());
+                                Get.to(PopularOnTapDetailsFirst());
                               },
                               child: Container(
                                 width: screenSize.width - 1,
@@ -77,7 +78,9 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                               ),
                             ),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Get.to(PopularOnTapDetailsFirst());
+                              },
                               child: Container(
                                   alignment: Alignment.center,
                                   height: 40,
@@ -157,7 +160,9 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                               width: 40,
                             ),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Get.to(PopularOnTapDetailsSecond());
+                              },
                               child: Container(
                                   alignment: Alignment.center,
                                   height: 40,
@@ -234,7 +239,9 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                               ),
                             ),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Get.to(PopularOnTapDetailsThird());
+                              },
                               child: Container(
                                   alignment: Alignment.center,
                                   height: 40,
@@ -370,10 +377,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                           child: Column(
                             children: [
                               InkWell(
-                                onTap: () {
-                                  Navigator.pushNamed(
-                                      context, '/csir_course_page');
-                                },
+                                onTap: () {},
                                 child: Container(
                                   width: screenSize.width / 3.5 - 1,
                                   height: 250,
@@ -397,7 +401,9 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                 width: 40,
                               ),
                               InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  Get.to(PopularOnTapDetailsSecond());
+                                },
                                 child: Container(
                                     alignment: Alignment.center,
                                     height: 40,
@@ -555,7 +561,9 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                               ),
                             ),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Get.to(PopularOnTapDetailsFour());
+                              },
                               child: Container(
                                   alignment: Alignment.center,
                                   height: 40,
@@ -708,7 +716,9 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                 ),
                               ),
                               InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  Get.to(ComingSoon());
+                                },
                                 child: Container(
                                     alignment: Alignment.center,
                                     height: 40,
@@ -861,7 +871,9 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                               width: 40,
                             ),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Get.to(PopularOnTapDetailsSix());
+                              },
                               child: Container(
                                   alignment: Alignment.center,
                                   height: 40,
@@ -909,10 +921,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                         child: Column(
                           children: [
                             InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(
-                                    context, '/csir_course_page');
-                              },
+                              onTap: () {},
                               child: Container(
                                 width: screenSize.width / 3.5 - 1,
                                 height: 250,
@@ -1016,7 +1025,9 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                               ),
                             ),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Get.to(PopularOnTapDetailsSeven());
+                              },
                               child: Container(
                                   alignment: Alignment.center,
                                   height: 40,
@@ -1095,7 +1106,9 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                 width: 40,
                               ),
                               InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  Get.to(PopularOnTapDetailsEight());
+                                },
                                 child: Container(
                                     alignment: Alignment.center,
                                     height: 40,
@@ -1173,7 +1186,9 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                 ),
                               ),
                               InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  Get.to(PopularOnTapDetailsNine());
+                                },
                                 child: Container(
                                     alignment: Alignment.center,
                                     height: 40,
@@ -1194,7 +1209,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                             begin: Alignment.bottomLeft,
                                             end: Alignment.topRight)),
                                     child: Center(
-                                        child: Text("KPSC EXAMS",
+                                        child: Text("PCB-JSA",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.black,
@@ -1251,7 +1266,9 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                 ),
                               ),
                               InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  Get.to(PopularOnTapDetailsTen());
+                                },
                                 child: Container(
                                     alignment: Alignment.center,
                                     height: 40,
@@ -1272,7 +1289,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                             begin: Alignment.bottomLeft,
                                             end: Alignment.topRight)),
                                     child: Center(
-                                        child: Text("CSIR UGC LIFESCIENCES",
+                                        child: Text("JLA-Junior",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.black,

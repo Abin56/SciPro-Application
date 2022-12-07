@@ -9,6 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 import 'package:scipro/faculty_screens/faculty_login_id_screen.dart';
+import 'package:scipro/signin/student_faculty_login_screen.dart';
 import 'package:scipro/utils/tab_bar_contents.dart';
 
 class FacultyHomePage extends StatefulWidget {
@@ -222,7 +223,7 @@ class _FacultyHomePageState extends State<FacultyHomePage> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (_) =>  FacultyLoginIdScreen()));
+                                builder: (_) => StudentandFacultyLoginScreen()));
                       });
                     },
                     child: const Text("save",

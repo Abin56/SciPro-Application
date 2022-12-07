@@ -8,6 +8,7 @@ import 'package:scipro/model_classes/v_model.dart';
 import 'package:scipro/screens/home_screen.dart';
 import 'package:scipro/signin/g_signin.dart';
 import 'package:scipro/signin/student_faclty_profilecreation.dart';
+import 'package:scipro/signin/student_faculty_login_screen.dart';
 import 'package:scipro/student_screens/Student_waiting_room.dart';
 import 'package:scipro/video_player/video_screen.dart';
 import 'package:scipro/video_player/videoplayer_firebase.dart';
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
                 );
               }
               if (snapshot.hasData) {
-                return const StudentandFacultyCreationPage();
+                return const StudentandFacultyLoginScreen();
               }
               return const Gsignin();
             },

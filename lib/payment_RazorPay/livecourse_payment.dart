@@ -11,25 +11,26 @@ import 'package:http/http.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:scipro/model/payment_model.dart';
 import 'package:slider_button/slider_button.dart';
+import '../model/live_class_model.dart';
 import '../widgets/button_Container.dart';
 import '../widgets/newMorphism.dart';
 
-class CheckOutScreen extends StatefulWidget {
+class LiveCoursePayment extends StatefulWidget {
   final user = FirebaseAuth.instance.currentUser!.uid;
-  String courseName;
   String courseID;
   double totalPrice;
-  CheckOutScreen(
+  String courseName;
+  LiveCoursePayment(
       {required this.totalPrice,
       required this.courseID,
       required this.courseName,
       super.key});
 
   @override
-  State<CheckOutScreen> createState() => _CheckOutScreenState();
+  State<LiveCoursePayment> createState() => _LiveCoursePaymentState();
 }
 
-class _CheckOutScreenState extends State<CheckOutScreen> {
+class _LiveCoursePaymentState extends State<LiveCoursePayment> {
   String listID = "";
   bool payment = false;
 
@@ -52,15 +53,22 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
     listID = roomName;
   }
 
+  // _getOrderID(String txnid, String amount) async {
+  //   print('<<<<<<<<<<<<<<<<Calling order id>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+  //   servicewrapper w
+  // }
+
   void _handlePaymentSuccess(PaymentSuccessResponse response) async {
     // After paymentSuccessFull section>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
-    final userpaymentData = UserPaymentModel(
+    final userpaymentData = LiveCoursePaymentModel(
         courseid: widget.courseID,
         uid: widget.user.toString(),
         courseName: widget.courseName);
-    await UserAddressAddToFireBase().addUserPaymentModelController(
-      userpaymentData,
-    );
+    LivePaymentStatusAddToFireBase()
+        .livePaymentModelController(userpaymentData, listID);
+
+    // await LiveCoursePaymentModel()
+    //     .livePaymentModelController(userpaymentData, listID);
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {}

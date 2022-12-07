@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scipro/faculty_screens/faculty_login_id_screen.dart';
 import 'package:scipro/screens/home_screen.dart';
+import 'package:scipro/signin/student_faculty_login_screen.dart';
 import 'package:scipro/widgets/button_Container.dart';
 
 class StudentProfleCreation extends StatefulWidget {
@@ -71,8 +72,6 @@ class _FacultyHomePageState extends State<StudentProfleCreation> {
             'subject': subject.text,
             'email': email.text,
             'mobilenumber': mobilenumber.text,
-            
-            
           }));
       //print(url);
     }
@@ -161,10 +160,12 @@ class _FacultyHomePageState extends State<StudentProfleCreation> {
                         'subject': subject.text,
                         'email': email.text,
                         'mobilenumber': mobilenumber.text,
-                        
                       }).whenComplete(() {
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (_) => HomeScreen()));
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) =>
+                                    const StudentandFacultyLoginScreen()));
                       });
                     },
                     child: ButtonContainerWidget(

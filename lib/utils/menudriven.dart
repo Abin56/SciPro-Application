@@ -5,6 +5,8 @@ import 'package:scipro/screens/live_courses.dart';
 import 'package:scipro/screens/recorded_courses.dart';
 import 'package:scipro/signin/student_faculty_login_screen.dart';
 
+import '../signin/g_signin.dart';
+
 class NavDrawer extends StatelessWidget {
   final auth = FirebaseAuth.instance;
   @override
@@ -18,28 +20,27 @@ class NavDrawer extends StatelessWidget {
             decoration: BoxDecoration(
                 color: Colors.blue,
                 image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage('assets/images/'))),
+                    fit: BoxFit.fill, image: AssetImage('assets/images/'))),
           ),
           ListTile(
             leading: Icon(Icons.input),
             title: Text('Welcome'),
             onTap: () => {
-            Navigator.push(
-             context,
-            MaterialPageRoute(builder: (context) => RecordedCourses()),
-             ),
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RecordedCourses()),
+              ),
             },
           ),
           ListTile(
             leading: Icon(Icons.verified_user),
             title: Text('Profile'),
-            onTap: () =>
-            {
+            onTap: () => {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => LiveCourses()),
-              ),},
+              ),
+            },
           ),
           ListTile(
             leading: Icon(Icons.settings),
@@ -55,33 +56,34 @@ class NavDrawer extends StatelessWidget {
               leading: Icon(Icons.exit_to_app),
               title: Text('Logout'),
               onTap: () => {
-                signOut(context),
-              }
-          ),
+                    signOut(context),
+                  }),
         ],
       ),
     );
   }
-  void signOut(context)async{
-    try{
-      await auth.signOut().then((value) =>
-      {
-        Navigator.pushAndRemoveUntil(
-            context, MaterialPageRoute(builder: (context) => StudentFacultyLoginScreen()), (route) => false)
-      });
-    }catch(e){
+
+  void signOut(context) async {
+    try {
+      await auth.signOut().then((value) => {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => Gsignin()),
+                (route) => false)
+          });
+    } catch (e) {
       errorBox(context, e);
     }
   }
-  void errorBox(context,e){
+
+  void errorBox(context, e) {
     showDialog(
         context: context,
-        builder: (context){
+        builder: (context) {
           return AlertDialog(
             title: Text("Error"),
             content: Text(e.toString()),
           );
         });
   }
-
 }

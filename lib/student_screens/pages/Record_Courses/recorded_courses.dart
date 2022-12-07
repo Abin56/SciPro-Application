@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -7,8 +10,13 @@ import 'package:scipro/payment_RazorPay/payment_screen.dart';
 import 'package:scipro/student_screens/pages/Record_Courses/recorded_courses_Details.dart';
 import 'package:scipro/widgets/button_Container.dart';
 
+var arec_CourseID = "";
+
 class RecordedCoursesListScreen extends StatelessWidget {
-  const RecordedCoursesListScreen({super.key});
+  String name = "";
+  String courseid = "";
+
+  RecordedCoursesListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,68 +26,85 @@ class RecordedCoursesListScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         title: Text('Select your plan'),
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: ListView.separated(
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(RecordCourseDetail());
-                      },
-                      child: ButtonContainerWidget(
-                        curving: 30,
-                        colorindex: index,
-                        height: 200,
-                        width: double.infinity,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: StreamBuilder(
+          stream: FirebaseFirestore.instance
+              .collection('RecordedCourses')
+              .snapshots(),
+          builder: (context, snapshots) {
+            if (snapshots.hasData) {
+              return SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: ListView.separated(
+                      itemBuilder: (context, index) {
+                        final data = snapshots.data!.docs[index].data();
+
+                        return Column(
                           children: [
-                            Text(
-                              listofRecordedCourses[index],
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14),
+                            SizedBox(
+                              height: 10.h,
                             ),
-                            Text(
-                              listofRecordedPrices[index],
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14),
-                            )
+                            GestureDetector(
+                              onTap: () async {
+                                arec_CourseID = data['CourseID'];
+                                print('fectching datas${arec_CourseID}');
+                                await Get.to(RecordCourseDetail(
+                                  courseID: arec_CourseID,
+                                ));
+                              },
+                              child: ButtonContainerWidget(
+                                curving: 30,
+                                colorindex: 0,
+                                height: 200,
+                                width: double.infinity,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      '${data['CourseTitle']}',
+                                      style: const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 17),
+                                    ),
+                                    Text(
+                                      '${data['CourseDuration']}',
+                                      style: const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15),
+                                    ),
+                                    SizedBox(
+                                      height: 20.h,
+                                    ),
+                                    Text(
+                                      '${data['CourseFee'] + '(inc.of all taxess)'}',
+                                      style: const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
                           ],
-                        ),
-                      ),
-                    ),
-                  ],
-                );
-              },
-              separatorBuilder: (context, index) {
-                return SizedBox(
-                  height: 20.h,
-                );
-              },
-              itemCount: 3),
-        ),
-      ),
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return SizedBox(
+                          height: 20.h,
+                        );
+                      },
+                      itemCount: snapshots.data!.docs.length),
+                ),
+              );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator.adaptive(),
+              );
+            }
+          }),
     );
   }
 }
-
-List listofRecordedCourses = [
-  'Junior Lab Assistant \n 3 Months',
-  'Junior Scientific Assistant \n 3 Months',
-  'Junior Scientific Assistant\n 3 Months'
-];
-List listofRecordedPrices = [
-  '3499.0(inc.of all taxess)',
-  '3499.0(inc.of all taxess)',
-  '3499.0(inc.of all taxess)',
-];

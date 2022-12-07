@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:scipro/screens/hybrid_courses.dart';
 import 'package:scipro/screens/live_classroom.dart';
 import 'package:scipro/screens/my_home_page.dart';
+import 'package:scipro/student_screens/pages/Live_Courses/live_Courses_list.dart';
+import 'package:scipro/student_screens/pages/Record_Courses/recorded_courses.dart';
 import 'package:scipro/utils/menudriven.dart';
 import 'package:scipro/video_player/videoplayer_firebase.dart';
 import '../utils/app_colors.dart';
@@ -24,8 +26,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   List<Widget> pages = [
-    const MyHomePage(),
-    const RecordedvideosPlayList(),
+    MyHomePage(),
+    RecordedCoursesListScreen(),
+    LiveCoursesListScreen(),
+
+    //  RecordedvideosPlayList(),
     const LiveClassRoom(),
     const HybridCourses()
   ];
