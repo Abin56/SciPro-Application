@@ -29,7 +29,7 @@ class LiveCoursesListScreen extends StatelessWidget {
       ),
       body: StreamBuilder(
           stream: FirebaseFirestore.instance
-              .collection('LiveCourseList')
+              .collection('LiveCoursesList')
               .snapshots(),
           builder: (context, snapshots) {
             if (snapshots.hasData) {

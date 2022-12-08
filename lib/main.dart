@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
                 );
               }
               if (snapshot.hasData) {
-                return const StudentandFacultyLoginScreen();
+                return  StudentandFacultyLoginScreen();
               }
               return const Gsignin();
             },

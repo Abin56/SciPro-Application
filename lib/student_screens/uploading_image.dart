@@ -12,7 +12,8 @@ import 'package:scipro/faculty_screens/faculty_home_screen.dart';
 import 'package:scipro/student_screens/student_profilecreation.dart';
 
 class UploadImageForStudent extends StatefulWidget {
-  UploadImageForStudent({super.key});
+
+  UploadImageForStudent({ super.key});
 
   @override
   State<UploadImageForStudent> createState() => _UploadImageForStudentState();
@@ -188,7 +189,10 @@ class _UploadImageForStudentState extends State<UploadImageForStudent> {
     final snapshot = await uploadTask!.whenComplete(() {});
     final urlDownload = await snapshot.ref.getDownloadURL();
     // Get.off(AddOfferProducts(imagepath: urlDownload));
-    Get.off(StudentProfleCreation(imagePath: urlDownload));
+    Get.off(StudentProfleCreation(
+      imagePath: urlDownload,
+     
+    ));
     log("Download Link : $urlDownload");
     setState(() {
       uploadTask = null;

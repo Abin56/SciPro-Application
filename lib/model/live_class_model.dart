@@ -19,23 +19,31 @@ String LiveCoursePaymentModelToJson(LiveCoursePaymentModel data) =>
 
 class LiveCoursePaymentModel {
   LiveCoursePaymentModel({
+    required this.useremail,
+    required this.userName,
     required this.courseid,
     required this.uid,
     required this.courseName,
   });
 
+  String useremail;
+  String userName;
   String courseid;
   String uid;
   String courseName;
 
   factory LiveCoursePaymentModel.fromJson(Map<String, dynamic> json) =>
       LiveCoursePaymentModel(
+        useremail: json["useremail"] ?? '',
+        userName: json["userName"] ?? '',
         courseid: json["courseid"] ?? '',
         uid: json["uid"] ?? '',
         courseName: json["courseName"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
+        "useremail": useremail,
+        "userName": userName,
         "courseid": courseid,
         "uid": uid,
         "courseName": courseName,

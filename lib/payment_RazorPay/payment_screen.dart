@@ -15,7 +15,9 @@ import '../widgets/button_Container.dart';
 import '../widgets/newMorphism.dart';
 
 class CheckOutScreen extends StatefulWidget {
+  final userEmail = FirebaseAuth.instance.currentUser!.email;
   final user = FirebaseAuth.instance.currentUser!.uid;
+  final userName = FirebaseAuth.instance.currentUser!.displayName;
   String courseName;
   String courseID;
   double totalPrice;
@@ -55,6 +57,8 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
   void _handlePaymentSuccess(PaymentSuccessResponse response) async {
     // After paymentSuccessFull section>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
     final userpaymentData = UserPaymentModel(
+        useremail: widget.userEmail.toString(),
+        userName: widget.userName.toString(),
         courseid: widget.courseID,
         uid: widget.user.toString(),
         courseName: widget.courseName);

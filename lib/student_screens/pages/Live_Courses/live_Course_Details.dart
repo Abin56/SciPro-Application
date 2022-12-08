@@ -80,12 +80,12 @@ class _LiveCourseDetailScreenState extends State<LiveCourseDetailScreen> {
   var courseid = arCourseID;
 
   CollectionReference refLive =
-      FirebaseFirestore.instance.collection("LiveCourseList");
+      FirebaseFirestore.instance.collection("LiveCoursesList");
 
   void getCourseTitle() async {
     User? user = FirebaseAuth.instance.currentUser;
     var vari = await FirebaseFirestore.instance
-        .collection("LiveCourseList")
+        .collection("LiveCoursesList")
         .doc(widget.courseID)
         .get();
     setState(() {
@@ -96,7 +96,7 @@ class _LiveCourseDetailScreenState extends State<LiveCourseDetailScreen> {
   void getCourseDuration() async {
     User? user = FirebaseAuth.instance.currentUser;
     var vari = await FirebaseFirestore.instance
-        .collection("LiveCourseList")
+        .collection("LiveCoursesList")
         .doc(widget.courseID)
         .get();
     setState(() {
@@ -107,7 +107,7 @@ class _LiveCourseDetailScreenState extends State<LiveCourseDetailScreen> {
   void getCourseFee() async {
     User? user = FirebaseAuth.instance.currentUser;
     var vari = await FirebaseFirestore.instance
-        .collection("LiveCourseList")
+        .collection("LiveCoursesList")
         .doc(widget.courseID)
         .get();
     setState(() {
@@ -118,7 +118,7 @@ class _LiveCourseDetailScreenState extends State<LiveCourseDetailScreen> {
   void getCourseID() async {
     User? user = FirebaseAuth.instance.currentUser;
     var vari = await FirebaseFirestore.instance
-        .collection("LiveCourseList")
+        .collection("LiveCoursesList")
         .doc(widget.courseID)
         .get();
     setState(() {
@@ -129,7 +129,7 @@ class _LiveCourseDetailScreenState extends State<LiveCourseDetailScreen> {
   void getFacultyName() async {
     User? user = FirebaseAuth.instance.currentUser;
     var vari = await FirebaseFirestore.instance
-        .collection("LiveCourseList")
+        .collection("LiveCoursesList")
         .doc(widget.courseID)
         .get();
     setState(() {
@@ -140,7 +140,7 @@ class _LiveCourseDetailScreenState extends State<LiveCourseDetailScreen> {
   void getDate() async {
     User? user = FirebaseAuth.instance.currentUser;
     var vari = await FirebaseFirestore.instance
-        .collection("LiveCourseList")
+        .collection("LiveCoursesList")
         .doc(widget.courseID)
         .get();
     setState(() {
@@ -151,7 +151,7 @@ class _LiveCourseDetailScreenState extends State<LiveCourseDetailScreen> {
   void getTime() async {
     User? user = FirebaseAuth.instance.currentUser;
     var vari = await FirebaseFirestore.instance
-        .collection("LiveCourseList")
+        .collection("LiveCoursesList")
         .doc(widget.courseID)
         .get();
     setState(() {
@@ -162,7 +162,7 @@ class _LiveCourseDetailScreenState extends State<LiveCourseDetailScreen> {
   void getVideoNumber() async {
     User? user = FirebaseAuth.instance.currentUser;
     var vari = await FirebaseFirestore.instance
-        .collection("LiveCourseList")
+        .collection("LiveCoursesList")
         .doc(widget.courseID)
         .get();
     setState(() {
@@ -262,23 +262,6 @@ class _LiveCourseDetailScreenState extends State<LiveCourseDetailScreen> {
                           ),
                           Text(
                             _courseTitle,
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Course SubTitle :',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            _courseID,
                             style: TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           )

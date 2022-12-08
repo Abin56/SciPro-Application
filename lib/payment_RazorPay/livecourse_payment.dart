@@ -17,6 +17,8 @@ import '../widgets/newMorphism.dart';
 
 class LiveCoursePayment extends StatefulWidget {
   final user = FirebaseAuth.instance.currentUser!.uid;
+  final userEmail = FirebaseAuth.instance.currentUser!.email;
+  final userName = FirebaseAuth.instance.currentUser!.displayName;
   String courseID;
   double totalPrice;
   String courseName;
@@ -61,6 +63,8 @@ class _LiveCoursePaymentState extends State<LiveCoursePayment> {
   void _handlePaymentSuccess(PaymentSuccessResponse response) async {
     // After paymentSuccessFull section>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
     final userpaymentData = LiveCoursePaymentModel(
+      useremail: widget.userEmail.toString(),
+        userName: widget.userName.toString(),
         courseid: widget.courseID,
         uid: widget.user.toString(),
         courseName: widget.courseName);

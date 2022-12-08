@@ -19,23 +19,31 @@ String UserPaymentModelToJson(UserPaymentModel data) =>
 
 class UserPaymentModel {
   UserPaymentModel({
+    required this.useremail,
+    required this.userName,
     required this.courseid,
     required this.uid,
     required this.courseName,
   });
+  String userName;
 
+  String useremail;
   String courseid;
   String uid;
   String courseName;
 
   factory UserPaymentModel.fromJson(Map<String, dynamic> json) =>
       UserPaymentModel(
+        useremail: json["useremail"] ?? '',
+        userName: json["userName"] ?? '',
         courseid: json["courseid"] ?? '',
         uid: json["uid"] ?? '',
         courseName: json["courseName"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
+        "useremail": useremail,
+        "userName": userName,
         "courseid": courseid,
         "uid": uid,
         "courseName": courseName,
@@ -45,7 +53,8 @@ class UserPaymentModel {
 class UserAddressAddToFireBase {
   final currentUser = FirebaseAuth.instance.currentUser!.uid;
   Future addUserPaymentModelController(
-      UserPaymentModel productModel,) async {
+    UserPaymentModel productModel,
+  ) async {
     try {
       final firebase = FirebaseFirestore.instance;
       final doc = firebase

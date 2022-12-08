@@ -9,8 +9,10 @@ import 'package:scipro/screens/home_screen.dart';
 import 'package:scipro/widgets/button_Container.dart';
 import 'package:scipro/widgets/newMorphism.dart';
 
+import 'login_previous_students.dart';
+
 class StudentandFacultyLoginScreen extends StatelessWidget {
-  const StudentandFacultyLoginScreen({super.key});
+  StudentandFacultyLoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class StudentandFacultyLoginScreen extends StatelessWidget {
           ButtonContainerWidget(
             curving: 30,
             colorindex: 0,
-            height: 250,
+            height: 220,
             width: double.infinity,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -77,7 +79,7 @@ class StudentandFacultyLoginScreen extends StatelessWidget {
           ButtonContainerWidget(
             curving: 30,
             colorindex: 0,
-            height: 250,
+            height: 220,
             width: double.infinity,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -109,6 +111,60 @@ class StudentandFacultyLoginScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Get.to(FacultyLoginIdScreen());
+                  },
+                  child: ButtonContainerWidget(
+                      curving: 30,
+                      colorindex: 4,
+                      height: 46.h,
+                      width: 180.w,
+                      child: Center(
+                        child: Text(
+                          'Go ',
+                          style: GoogleFonts.montserrat(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700),
+                        ),
+                      )),
+                )
+              ],
+            ),
+          ),
+          ButtonContainerWidget(
+            curving: 30,
+            colorindex: 0,
+            height: 220,
+            width: double.infinity,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  "Login \n   as",
+                  style: GoogleFonts.montserrat(
+                      color: Colors.white,
+                      fontSize: 30,
+                      fontWeight: FontWeight.w700),
+                ),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    child: Image.asset(
+                      'assets/images/SCIPRO.png',
+                      height: 50,
+                      width: 100,
+                    ),
+                  ),
+                  Text(
+                    " Pervious Students",
+                    style: GoogleFonts.montserrat(
+                        color: Color.fromARGB(255, 30, 10, 85),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700),
+                  )
+                ]),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(PreviousStudentCourseList());
                   },
                   child: ButtonContainerWidget(
                       curving: 30,

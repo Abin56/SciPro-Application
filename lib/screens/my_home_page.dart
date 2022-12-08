@@ -215,20 +215,20 @@ class _MyHomePageState extends State<MyHomePage> {
                     Builder(builder: (context) {
                       if (widget.courseID.isNotEmpty) {
                         return CustomButton(
-                            text: 'Start your journy',
+                            text: 'Subscribed Courses',
                             onPressed: () async {
                               Get.to(UserSelectingCourselisting());
                             });
                       } else if (widget.liveCourseID.isNotEmpty) {
                         return CustomButton(
-                            text: 'Start your journy',
+                            text: 'Subscribed Courses',
                             onPressed: () async {
                               Get.to(UserSelectingCourselisting());
                             });
                       } else if (widget.liveCourseID.isNotEmpty &&
                           widget.courseID.isNotEmpty) {
                         return CustomButton(
-                            text: 'Start your journy',
+                            text: 'Subscribed Courses',
                             onPressed: () async {
                               Get.to(UserSelectingCourselisting());
                             });

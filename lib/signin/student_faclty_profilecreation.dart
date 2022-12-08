@@ -9,7 +9,8 @@ import 'package:scipro/student_screens/student_profilecreation.dart';
 import 'package:scipro/student_screens/uploading_image.dart';
 
 class StudentandFacultyCreationPage extends StatelessWidget {
-  const StudentandFacultyCreationPage({super.key});
+
+   StudentandFacultyCreationPage({ super.key});
 
   @override
   Widget build(BuildContext context) {

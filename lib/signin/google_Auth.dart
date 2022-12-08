@@ -56,7 +56,7 @@ class GoogleSiginController {
           'phoneNumber': value.user!.phoneNumber,
           'photoURL': value.user!.photoURL,
           'isBlocked': false,
-        }).then((value) => Get.offAll(const StudentandFacultyCreationPage()));
+        }).then((value) => Get.offAll( StudentandFacultyCreationPage()));
       });
       //   .then((value) async {
       // final UserModel data = UserModel(

@@ -9,10 +9,12 @@ import 'package:scipro/signin/student_faculty_login_screen.dart';
 import 'package:scipro/widgets/button_Container.dart';
 
 class StudentProfleCreation extends StatefulWidget {
+ 
   String imagePath;
   String? name, place, subject, email, mobilrnumber, imageUrl;
   StudentProfleCreation(
       {Key? key,
+
       required this.imagePath,
       this.name,
       this.place,
@@ -164,8 +166,9 @@ class _FacultyHomePageState extends State<StudentProfleCreation> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (_) =>
-                                    const StudentandFacultyLoginScreen()));
+                                builder: (_) => StudentandFacultyLoginScreen(
+                                    
+                                    )));
                       });
                     },
                     child: ButtonContainerWidget(
