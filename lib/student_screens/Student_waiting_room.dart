@@ -1,11 +1,16 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:scipro/screens/live_classroom.dart';
 import 'package:scipro/utils/responsive.dart';
+import 'package:scipro/widgets/button_Container.dart';
 
 class StudentWaitingRoom extends StatefulWidget {
-  const StudentWaitingRoom({Key? key}) : super(key: key);
+  String courseName;
+  String time;
+  StudentWaitingRoom({Key? key, required this.courseName, required this.time})
+      : super(key: key);
 
   @override
   State<StudentWaitingRoom> createState() => _StudentWaitingRoomState();
@@ -14,7 +19,6 @@ class StudentWaitingRoom extends StatefulWidget {
 class _StudentWaitingRoomState extends State<StudentWaitingRoom> {
   late final dref = FirebaseDatabase.instance.ref();
   late DatabaseReference databaseReference;
-
 
   @override
   void initState() {
@@ -25,58 +29,164 @@ class _StudentWaitingRoomState extends State<StudentWaitingRoom> {
 
   @override
   Widget build(BuildContext context) {
-    var a ;
+    var a;
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Student Waiting Room",
-          style: TextStyle(
-              color: Colors.limeAccent,
-              fontSize: 15
-          ),),
-      ),
-      body: Column(
-        children: [
-          Container(
-            child:
-            Column(
+        appBar: AppBar(
+          title: const Text(
+            "Student Waiting Room",
+            style: TextStyle(color: Colors.limeAccent, fontSize: 15),
+          ),
+        ),
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
               children: [
-                Text("Course Name"),
-                Text("Course Duration"),
-                Text("Course Time")
+                ButtonContainerWidget(
+                    colorindex: 0,
+                    height: 200,
+                    width: double.infinity,
+                    curving: 30,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              "Course Name :",
+                              style: GoogleFonts.montserrat(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            Text(
+                              widget.courseName,
+                              style: GoogleFonts.montserrat(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700),
+                              overflow: TextOverflow.clip,
+                            )
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              "Time :",
+                              style: GoogleFonts.montserrat(
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            Text(
+                              widget.time,
+                              style: GoogleFonts.montserrat(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700),
+                            )
+                          ],
+                        ),
+                      ],
+                    )),
+                SizedBox(
+                  height: 20,
+                ),
+                StreamBuilder(
+                    stream: databaseReference.child("courseA").onValue,
+                    builder: (context, AsyncSnapshot snapshot) {
+                      if (!snapshot.hasData)
+                        return const CircularProgressIndicator(
+                            color: Colors.red);
+
+                      return Column(
+                        children: [
+                          if (snapshot.data!.snapshot.value["start"]
+                                  .toString() ==
+                              "b")
+                            ButtonContainerWidget(
+                              curving: 30,
+                              colorindex: 3,
+                              height: 200,
+                              width: double.infinity,
+                              child: Column(
+                                children: [
+                                  Text(
+                                    "Message",
+                                    style: GoogleFonts.montserrat(
+                                        color: Colors.white,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    snapshot.data!.snapshot.value["message"]
+                                        .toString(),
+                                    style: GoogleFonts.montserrat(
+                                        color: Colors.white,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                ],
+                              ),
+                            ),
+                        ],
+                      );
+                    }),
+                SizedBox(
+                  height: 40,
+                ),
+                StreamBuilder(
+                  stream: databaseReference.child("courseA").onValue,
+                  builder: (context, AsyncSnapshot snapshot) {
+                    if (!snapshot.hasData)
+                      return const CircularProgressIndicator(color: Colors.red);
+                    return Column(
+                      children: [
+                        if (snapshot.data!.snapshot.value["start"].toString() ==
+                            "b")
+                          InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LiveClassRoom(
+                                              roomID: snapshot.data!.snapshot
+                                                  .value["course"]
+                                                  .toString(),
+                                            )));
+                              },
+                              child: ButtonContainerWidget(
+                                curving: 30,
+                                colorindex: 2,
+                                height: 50,
+                                width: 120,
+                                child: const Center(
+                                  child: Text(
+                                    "Enter",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15),
+                                  ),
+                                ),
+                              )),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        const Text(
+                            'Wait Your teacher is prapring the class room'),
+                      ],
+                    );
+                  },
+                ),
               ],
             ),
           ),
-          SizedBox(height: 40,),
-           StreamBuilder(
-              stream: databaseReference.child("courseA").onValue,
-              builder: (context, AsyncSnapshot snapshot) {
-                if (!snapshot.hasData) return CircularProgressIndicator(color: Colors.red);
-                return Column(
-                  children: [
-                    if (snapshot.data!.snapshot.value["start"].toString() == "b")
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const LiveClassRoom()));
-                },
-                        child:
-                      Container(
-                        height:50,
-                          width:100,
-                          color:Colors.green,
-                          child:
-                          Text('Enter')),),
-                    Text('Wait Your teacher is prapring the class room'),
-
-
-                  ],
-                );
-              },
-            ),
-    ]
-    )
-    );
+        ));
   }
 }
-

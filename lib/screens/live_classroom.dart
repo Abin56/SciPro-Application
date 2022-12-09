@@ -6,7 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:omni_jitsi_meet/jitsi_meet.dart';
 
 class LiveClassRoom extends StatefulWidget {
-  const LiveClassRoom({Key? key}) : super(key: key);
+  String roomID;
+  LiveClassRoom({
+    Key? key,
+    required this.roomID,
+  }) : super(key: key);
 
   @override
   State<LiveClassRoom> createState() => _LiveClassRoomState();
@@ -19,7 +23,7 @@ class _LiveClassRoomState extends State<LiveClassRoom> {
   final nameText = TextEditingController(text: "");
   final emailText = TextEditingController(text: "");
   final iosAppBarRGBAColor =
-  TextEditingController(text: "#0080FF80"); //transparent blue
+      TextEditingController(text: "#0080FF80"); //transparent blue
   bool? isAudioOnly = true;
   bool? isAudioMuted = true;
   bool? isVideoMuted = true;
@@ -38,31 +42,31 @@ class _LiveClassRoomState extends State<LiveClassRoom> {
           ),
           child: kIsWeb
               ? Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                width: width * 0.30,
-                child: meetConfig(),
-              ),
-              Container(
-                  width: width * 0.60,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                        color: Colors.white54,
-                        child: SizedBox(
-                          width: width * 0.60 * 0.70,
-                          height: width * 0.60 * 0.70,
-                          child: JitsiMeetConferencing(
-                            extraJS: [
-                              // extraJs setup example
-                              '<script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>'
-                            ],
-                          ),
-                        )),
-                  ))
-            ],
-          )
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: width * 0.30,
+                      child: meetConfig(),
+                    ),
+                    Container(
+                        width: width * 0.60,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Card(
+                              color: Colors.white54,
+                              child: SizedBox(
+                                width: width * 0.60 * 0.70,
+                                height: width * 0.60 * 0.70,
+                                child: JitsiMeetConferencing(
+                                  extraJS: [
+                                    // extraJs setup example
+                                    '<script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>'
+                                  ],
+                                ),
+                              )),
+                        ))
+                  ],
+                )
               : meetConfig(),
         ),
       ),
@@ -77,12 +81,12 @@ class _LiveClassRoomState extends State<LiveClassRoom> {
             height: 16.0,
           ),
           //TextField(
-            //controller: serverText,
-           // decoration: InputDecoration(
+          //controller: serverText,
+          // decoration: InputDecoration(
           //      border: OutlineInputBorder(),
           //      labelText: "Server URL",
-         //       hintText: "Hint: Leave empty for meet.jitsi.si"),
-         // ),
+          //       hintText: "Hint: Leave empty for meet.jitsi.si"),
+          // ),
           SizedBox(
             height: 14.0,
           ),
@@ -90,7 +94,7 @@ class _LiveClassRoomState extends State<LiveClassRoom> {
             controller: roomText,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
-              labelText: "Room",
+              labelText: widget.roomID,
             ),
           ),
           SizedBox(
@@ -154,7 +158,7 @@ class _LiveClassRoomState extends State<LiveClassRoom> {
               ),
               style: ButtonStyle(
                   backgroundColor:
-                  MaterialStateColor.resolveWith((states) => Colors.blue)),
+                      MaterialStateColor.resolveWith((states) => Colors.blue)),
             ),
           ),
           SizedBox(

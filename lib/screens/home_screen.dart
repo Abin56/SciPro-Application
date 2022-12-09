@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     LiveCoursesListScreen(),
 
     //  RecordedvideosPlayList(),
-    const LiveClassRoom(),
+    LiveClassRoom(roomID: ''),
     const HybridCourses()
   ];
 

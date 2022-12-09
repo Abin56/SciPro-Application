@@ -80,15 +80,16 @@ class _RecordedCourseListScreenState extends State<RecordedCourseListScreen> {
                         itemBuilder: (context, index) {
                           var data = snapshots.data!.docs[index].data()
                               as Map<String, dynamic>;
-                          log('LoadingData>>>>>>>>>>>>>>>>>>>>>>>>>${data.toString()}');
+                          // log('LoadingData>>>>>>>>>>>>>>>>>>>>>>>>>${data.toString()}');
 
                           if (user == data['uid']) {
-                            log('UIDDDDDDD>>>>>>>>>>>>>>>>>>>>>>>>>${data['uid'].toString()}');
+                            // log('UIDDDDDDD>>>>>>>>>>>>>>>>>>>>>>>>>${data['uid'].toString()}');
                             return GestureDetector(
                               onTap: () {
                                 final newdata = UserPaymentModel.fromJson(
                                     snapshots.data!.docs[index].data()
                                         as Map<String, dynamic>);
+                                log('VIDEOPATH>>>>>>>>>>>>>>>${newdata.courseid.toString()}');
                                 Get.to(RecordedvideosPlayList(
                                   videoPath: newdata.courseid,
                                 ));

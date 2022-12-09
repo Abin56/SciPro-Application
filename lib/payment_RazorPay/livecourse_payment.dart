@@ -20,12 +20,14 @@ class LiveCoursePayment extends StatefulWidget {
   final userEmail = FirebaseAuth.instance.currentUser!.email;
   final userName = FirebaseAuth.instance.currentUser!.displayName;
   String courseID;
-  double totalPrice;
+  String totalPrice;
   String courseName;
+    String courseTime;
   LiveCoursePayment(
       {required this.totalPrice,
       required this.courseID,
       required this.courseName,
+      required this.courseTime,
       super.key});
 
   @override
@@ -63,6 +65,7 @@ class _LiveCoursePaymentState extends State<LiveCoursePayment> {
   void _handlePaymentSuccess(PaymentSuccessResponse response) async {
     // After paymentSuccessFull section>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
     final userpaymentData = LiveCoursePaymentModel(
+       courseTime:widget.courseTime ,
       useremail: widget.userEmail.toString(),
         userName: widget.userName.toString(),
         courseid: widget.courseID,

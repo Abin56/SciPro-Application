@@ -7,9 +7,10 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../payment_RazorPay/livecourse_payment.dart';
+import '../../../payment_RazorPay/payment_screen.dart';
 import '../../../widgets/button_Container.dart';
 
-class LiveCourseDetailScreen extends StatelessWidget {
+class RecordedCourseDetailScreen extends StatelessWidget {
   String coursetitle;
   String faculty;
   String coursefee;
@@ -17,7 +18,7 @@ class LiveCourseDetailScreen extends StatelessWidget {
   String courseId;
   String time;
   String date;
-  LiveCourseDetailScreen(
+  RecordedCourseDetailScreen(
       {required this.coursetitle,
       required this.faculty,
       required this.coursefee,
@@ -212,8 +213,7 @@ class LiveCourseDetailScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () async {
-                Get.to(LiveCoursePayment(
-                    courseTime: time,
+                Get.to(CheckOutScreen(
                     courseName: coursetitle,
                     totalPrice: coursefee,
                     courseID: courseId));

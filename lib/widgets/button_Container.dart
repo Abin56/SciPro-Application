@@ -48,7 +48,7 @@ class ButtonContainerWidget extends StatelessWidget {
 const containerColor = [
   [Color(0xff6448fe), Color(0xff5fc6ff)],
   [Color(0xfffe6197), Color(0xffffb463)],
-  [Color(0xff61a3fe), Color(0xff63ffd5)],
-  [Color(0xffffa738), Color(0xffffe130)],
+  [Color.fromARGB(255, 30, 196, 30), Color.fromARGB(255, 79, 163, 30)],
+  [Color.fromARGB(255, 116, 130, 255), Color.fromARGB(255, 86, 74, 117)],
   [Color.fromARGB(255, 208, 104, 105), Color.fromARGB(255, 241, 66, 66)],
 ];

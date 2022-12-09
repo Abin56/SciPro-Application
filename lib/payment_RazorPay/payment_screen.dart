@@ -20,7 +20,7 @@ class CheckOutScreen extends StatefulWidget {
   final userName = FirebaseAuth.instance.currentUser!.displayName;
   String courseName;
   String courseID;
-  double totalPrice;
+  String totalPrice;
   CheckOutScreen(
       {required this.totalPrice,
       required this.courseID,

@@ -9,6 +9,7 @@ import 'package:lottie/lottie.dart';
 import 'package:scipro/screens/hybrid_courses.dart';
 import 'package:scipro/screens/live_classroom.dart';
 import 'package:scipro/screens/live_courses.dart';
+import 'package:scipro/student_screens/Student_waiting_room.dart';
 import 'package:scipro/student_screens/pages/Hybrid_Courses.dart';
 import 'package:scipro/student_screens/pages/Live_Courses/live_Course_Details.dart';
 import 'package:scipro/student_screens/pages/Live_Courses/live_Courses_list.dart';
@@ -83,7 +84,14 @@ class _LiveCourseListScreenState extends State<LiveCourseListScreen> {
                           if (user == data['uid']) {
                             log('UIDDDDDDD>>>>>>>>>>>>>>>>>>>>>>>>>${data['uid'].toString()}');
                             return GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                log(data['courseTime']);
+
+                                Get.to(StudentWaitingRoom(
+                                  courseName: data['courseName'],
+                                  time: data['courseTime'],
+                                ));
+                              },
                               child: ButtonContainerWidget(
                                 curving: 30,
                                 colorindex: 0,

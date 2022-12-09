@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:scipro/model/live_course_model.dart';
 import 'package:scipro/payment_RazorPay/payment_screen.dart';
 import 'package:scipro/student_screens/pages/Live_Courses/live_Course_Details.dart';
 import 'package:scipro/student_screens/pages/Record_Courses/recorded_courses_Details.dart';
@@ -29,7 +30,7 @@ class LiveCoursesListScreen extends StatelessWidget {
       ),
       body: StreamBuilder(
           stream: FirebaseFirestore.instance
-              .collection('LiveCoursesList')
+              .collection('LiveCourselist')
               .snapshots(),
           builder: (context, snapshots) {
             if (snapshots.hasData) {
@@ -38,7 +39,8 @@ class LiveCoursesListScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8),
                   child: ListView.separated(
                       itemBuilder: (context, index) {
-                        final data = snapshots.data!.docs[index].data();
+                        final data = LiveCourseAddModel.fromJson(
+                            snapshots.data!.docs[index].data());
 
                         return Column(
                           children: [
@@ -47,11 +49,14 @@ class LiveCoursesListScreen extends StatelessWidget {
                             ),
                             GestureDetector(
                               onTap: () async {
-                                arec_CourseID = data['CourseID'];
-                                print('fectching datas${arec_CourseID}');
                                 await Get.to(LiveCourseDetailScreen(
-                                  courseID: arec_CourseID,
-                                ));
+                                    coursetitle: data.courseTitle,
+                                    faculty: data.facultyName,
+                                    coursefee: data.courseFee,
+                                    duration: data.duration,
+                                    courseId: data.courseID,
+                                    date: data.postedDate,
+                                    time: data.postedTime));
                               },
                               child: ButtonContainerWidget(
                                 curving: 30,
@@ -62,14 +67,17 @@ class LiveCoursesListScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      '${data['CourseTitle']}',
+                                      '${data.courseTitle}',
                                       style: const TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 17),
                                     ),
+                                    SizedBox(
+                                      height: 10.h,
+                                    ),
                                     Text(
-                                      '${data['CourseDuration']}',
+                                      '${data.duration}',
                                       style: const TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
@@ -79,7 +87,7 @@ class LiveCoursesListScreen extends StatelessWidget {
                                       height: 20.h,
                                     ),
                                     Text(
-                                      '${data['CourseFee'] + '(inc.of all taxess)'}',
+                                      '${data.courseFee.toString() + '(inc.of all taxess)'}',
                                       style: const TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,

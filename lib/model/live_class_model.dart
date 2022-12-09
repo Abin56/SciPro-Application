@@ -24,6 +24,7 @@ class LiveCoursePaymentModel {
     required this.courseid,
     required this.uid,
     required this.courseName,
+    required this.courseTime,
   });
 
   String useremail;
@@ -31,6 +32,7 @@ class LiveCoursePaymentModel {
   String courseid;
   String uid;
   String courseName;
+    String courseTime;
 
   factory LiveCoursePaymentModel.fromJson(Map<String, dynamic> json) =>
       LiveCoursePaymentModel(
@@ -39,6 +41,7 @@ class LiveCoursePaymentModel {
         courseid: json["courseid"] ?? '',
         uid: json["uid"] ?? '',
         courseName: json["courseName"] ?? '',
+             courseTime: json["courseTime"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
@@ -47,6 +50,7 @@ class LiveCoursePaymentModel {
         "courseid": courseid,
         "uid": uid,
         "courseName": courseName,
+          "courseTime": courseTime,
       };
 }
 
