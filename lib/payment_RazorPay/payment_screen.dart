@@ -10,6 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:scipro/model/payment_model.dart';
+import 'package:scipro/pdf/pdf_Api.dart';
 import 'package:slider_button/slider_button.dart';
 import '../widgets/button_Container.dart';
 import '../widgets/newMorphism.dart';
@@ -21,6 +22,7 @@ class CheckOutScreen extends StatefulWidget {
   String courseName;
   String courseID;
   String totalPrice;
+
   CheckOutScreen(
       {required this.totalPrice,
       required this.courseID,
@@ -55,8 +57,13 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
   }
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) async {
+    //PDF Seaction>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+   
+
+  
     // After paymentSuccessFull section>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
     final userpaymentData = UserPaymentModel(
+      totalprice: widget.totalPrice,
         useremail: widget.userEmail.toString(),
         userName: widget.userName.toString(),
         courseid: widget.courseID,

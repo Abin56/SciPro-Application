@@ -7,7 +7,7 @@
 
    <application
         tools:replace="android:label"
-        android:label="scipro"
+        android:label="SciPro"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

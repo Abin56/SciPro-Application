@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:scipro/screens/hybrid_courses.dart';
 import 'package:scipro/screens/live_classroom.dart';
 import 'package:scipro/screens/my_home_page.dart';
@@ -6,7 +8,9 @@ import 'package:scipro/student_screens/pages/Live_Courses/live_Courses_list.dart
 import 'package:scipro/student_screens/pages/Record_Courses/recorded_courses.dart';
 import 'package:scipro/utils/menudriven.dart';
 import 'package:scipro/video_player/videoplayer_firebase.dart';
+import '../getx/naviagtion_bar.dart';
 import '../utils/app_colors.dart';
+import 'drawer/drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -31,15 +35,18 @@ class _HomeScreenState extends State<HomeScreen> {
     LiveCoursesListScreen(),
 
     //  RecordedvideosPlayList(),
-    LiveClassRoom(roomID: ''),
+    // LiveClassRoom(roomID: ''),
     const HybridCourses()
   ];
+  // int currentIndex = 0;
+  // currentindex(int index) {
+  //   currentIndex = index;
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
+  void initState() {}
+
+  // TODO: implement initState
+  // super.initState();
 
   @override
   Widget build(BuildContext context) {
@@ -48,33 +55,80 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text("SCIPRO"),
       ),
       body: pages[_page],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: AppColor.gradientFirst,
-        selectedItemColor: Colors.red,
-        unselectedItemColor: Colors.grey,
-        onTap: onPageChanged,
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _page,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'SciPRO',
+      bottomNavigationBar: Container(
+        height: 73,
+        decoration: BoxDecoration(
+          // color: Colors.white,
+          borderRadius: BorderRadius.circular(30),
+          border: Border.all(color: Colors.white.withOpacity(0.13)),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromARGB(255, 6, 71, 157),
+              Color.fromARGB(255, 5, 85, 222)
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.tv),
-            label: 'Recorded Courses',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.computer),
-            label: 'Live Courses',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_box_rounded),
-            label: 'Hybrid Courses',
-          ),
-        ],
+        ),
+        child: GNav(
+          // tabBackgroundGradient: LinearGradient(
+          //   colors: glassmorphism[0],
+          //   begin: Alignment.centerLeft,
+          //   end: Alignment.centerRight,
+          // ),
+          // backgroundColor: Colors.amber,
+          // curve: Curves.easeOutExpo,
+          // haptic: true,
+          gap: 8,
+          rippleColor: Colors.grey,
+          // hoverColor: Colors.amber,
+          activeColor: Colors.white,
+          // duration: Duration(microseconds: 300),
+          // tabBackgroundColor: Colors.red,
+          color: Colors.white,
+          tabs: const [
+            GButton(
+                iconSize: 20,
+                icon: LineIcons.home,
+                text: 'Home',
+                style: GnavStyle.google),
+            GButton(
+              iconSize: 20,
+              textSize: 9,
+              icon: Icons.tv,
+              text: 'ReC_Courses',
+            ),
+            GButton(
+              iconSize: 20,
+              // iconSize: 10,
+              textSize: 12,
+              icon: Icons.laptop,
+              text: 'Live Courses',
+            ),
+            GButton(
+              iconSize: 20,
+              icon: Icons.live_tv_sharp,
+              text: 'Hybridl',
+            )
+          ],
+          selectedIndex: _page,
+          onTabChange: (value) {
+            onPageChanged(value);
+          },
+        ),
       ),
-      drawer: NavDrawer(),
+      // drawer: NavDrawer(),
+      drawer: Drawer(
+        backgroundColor: const Color.fromARGB(255, 39, 29, 41),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              MyHeaderDrawer(),
+              MyDrawerList(context),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

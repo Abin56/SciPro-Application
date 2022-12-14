@@ -23,8 +23,9 @@ class UserCheckingJSALive {
 //   )
 
 // ];
-List<String> jSALiveStudents = [
-  'dhanya059@gmail.com',
+var jSALiveStudents = [
+  'leptoncommunications@gmail.com'
+      'dhanya059@gmail.com',
   'soumyasarathomas22@gmail.com',
   'amruthapna@gmail.com',
   'abhananda02@gmail.com',
@@ -35,7 +36,8 @@ List<String> jSALiveStudents = [
   'athirakaimal14@gmail.com',
 ];
 List<String> jLALiveStudents = [
-  'rameesatk11@gmail.com',
+  "leptoncommunications@gmail.com"
+      'rameesatk11@gmail.com',
   'amruthapna@gmail.com',
   'jithink794@gmail.com',
   'anjumthasni38@gmail.com',
@@ -43,7 +45,8 @@ List<String> jLALiveStudents = [
   'devuvenu@gmail.com',
 ];
 List<String> jSARecordedStudents = [
-  'saranyasasikumar088@gmail.com',
+  "leptoncommunications@gmail.com"
+      'saranyasasikumar088@gmail.com',
   'nasrinillikkal1998@gmail.com',
   'reshuammu1@gmail.com',
   'tmsudan9@gmail.com',
@@ -73,7 +76,8 @@ List<String> jSARecordedStudents = [
 ];
 
 List<String> jLARecordedClass = [
-  'anusreehs174@gmail.com',
+  "leptoncommunications@gmail.com"
+      'anusreehs174@gmail.com',
   'aparnaonlines@gmail.com',
   'muneerashamlik95@gmail.com',
   'nusrathbanukp@gmail.com',

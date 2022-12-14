@@ -9,6 +9,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scipro/signin/sample.dart';
+import 'package:scipro/student_screens/Student_waiting_room.dart';
+import 'package:scipro/video_player/videoplayer_firebase.dart';
 import 'package:scipro/widgets/button_Container.dart';
 
 import '../model/paid_model.dart';
@@ -28,16 +30,26 @@ class PreviousStudentCourseList extends StatelessWidget {
         child: ListView(
           children: [
             GestureDetector(
-              onTap: () {
-                final currentUser =
-                    FirebaseAuth.instance.currentUser!.displayName;
-                log('UserEmailidrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr${currentUser}');
-                if (jSALiveStudents.contains(currentUser)) {
-                  log('Correct');
-                  Get.to(Sample());
+              onTap: () async {
+                final currentUser = FirebaseAuth.instance.currentUser!.email;
+                log(currentUser.toString());
+
+                CollectionReference cat =
+                    FirebaseFirestore.instance.collection("JSALiveCourse");
+                Query query = cat.where("Email", isEqualTo: currentUser);
+                QuerySnapshot querySnapshot = await query.get();
+                final docData =
+                    querySnapshot.docs.map((doc) => doc.data()).toList();
+                log(docData.toString());
+                if (docData.isNotEmpty) {
+                  log("set");
+                  Get.to(StudentWaitingRoom(
+                      courseName: "JSALiveCourse", time: ""));
                 } else {
+                  final currentname =
+                      FirebaseAuth.instance.currentUser!.displayName;
                   Get.snackbar(
-                    "${currentUser}",
+                    "${currentname}",
                     ' You are not Subscribed',
                     backgroundColor: Colors.red,
                     colorText: Colors.white,
@@ -49,6 +61,7 @@ class PreviousStudentCourseList extends StatelessWidget {
                           fontWeight: FontWeight.w700),
                     ),
                   );
+                  log("error");
                 }
               },
               child: ButtonContainerWidget(
@@ -68,17 +81,26 @@ class PreviousStudentCourseList extends StatelessWidget {
               height: 20.h,
             ),
             GestureDetector(
-              onTap: () {
-                final currentUser =
-                    FirebaseAuth.instance.currentUser!.displayName;
-                log('UserEmailidrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr${currentUser}');
-                if (jSARecordedStudents.contains(currentUser)) {
-                  log('Correct');
-                  Get.to(Sample());
+              onTap: () async {
+                final currentUser = FirebaseAuth.instance.currentUser!.email;
+                log(currentUser.toString());
+
+                CollectionReference cat =
+                    FirebaseFirestore.instance.collection("JSARecordedCourse");
+                Query query = cat.where("Email", isEqualTo: currentUser);
+                QuerySnapshot querySnapshot = await query.get();
+                final docData =
+                    querySnapshot.docs.map((doc) => doc.data()).toList();
+                log(docData.toString());
+                if (docData.isNotEmpty) {
+                  log("set");
+
+                  Get.to(RecordedvideosPlayList(videoPath: 'JSA@SCI1R'));
                 } else {
-                  final currentUser = FirebaseAuth.instance.currentUser!.email;
+                  final currentname =
+                      FirebaseAuth.instance.currentUser!.displayName;
                   Get.snackbar(
-                    "${currentUser}",
+                    "${currentname}",
                     ' You are not Subscribed',
                     backgroundColor: Colors.red,
                     colorText: Colors.white,
@@ -90,6 +112,7 @@ class PreviousStudentCourseList extends StatelessWidget {
                           fontWeight: FontWeight.w700),
                     ),
                   );
+                  log("error");
                 }
               },
               child: ButtonContainerWidget(
@@ -109,16 +132,26 @@ class PreviousStudentCourseList extends StatelessWidget {
               height: 20.h,
             ),
             GestureDetector(
-              onTap: () {
-                final currentUser =
-                    FirebaseAuth.instance.currentUser!.displayName;
-                log('UserEmailidrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr${currentUser}');
-                if (jLALiveStudents.contains(currentUser)) {
-                  log('Correct');
-                  Get.to(Sample());
+              onTap: () async {
+                final currentUser = FirebaseAuth.instance.currentUser!.email;
+                log(currentUser.toString());
+
+                CollectionReference cat =
+                    FirebaseFirestore.instance.collection("JLALiveCourse");
+                Query query = cat.where("Email", isEqualTo: currentUser);
+                QuerySnapshot querySnapshot = await query.get();
+                final docData =
+                    querySnapshot.docs.map((doc) => doc.data()).toList();
+                log(docData.toString());
+                if (docData.isNotEmpty) {
+                  log("set");
+                  Get.to(StudentWaitingRoom(
+                      courseName: "JLALiveCourse", time: ""));
                 } else {
+                  final currentname =
+                      FirebaseAuth.instance.currentUser!.displayName;
                   Get.snackbar(
-                    "${currentUser}",
+                    "${currentname}",
                     ' You are not Subscribed',
                     backgroundColor: Colors.red,
                     colorText: Colors.white,
@@ -130,6 +163,7 @@ class PreviousStudentCourseList extends StatelessWidget {
                           fontWeight: FontWeight.w700),
                     ),
                   );
+                  log("error");
                 }
               },
               child: ButtonContainerWidget(
@@ -149,16 +183,26 @@ class PreviousStudentCourseList extends StatelessWidget {
               height: 20.h,
             ),
             GestureDetector(
-              onTap: () {
-                final currentUser =
-                    FirebaseAuth.instance.currentUser!.displayName;
-                log('UserEmailidrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr${currentUser}');
-                if (jLARecordedClass.contains(currentUser)) {
-                  log('Correct');
-                  Get.to(Sample());
+              onTap: () async {
+                final currentUser = FirebaseAuth.instance.currentUser!.email;
+                log(currentUser.toString());
+
+                CollectionReference cat =
+                    FirebaseFirestore.instance.collection("JLARecordedCourse");
+                Query query = cat.where("Email", isEqualTo: currentUser);
+                QuerySnapshot querySnapshot = await query.get();
+                final docData =
+                    querySnapshot.docs.map((doc) => doc.data()).toList();
+                log(docData.toString());
+                if (docData.isNotEmpty) {
+                  log("set");
+
+                  Get.to(RecordedvideosPlayList(videoPath: 'JLA@SCI1R'));
                 } else {
+                  final currentname =
+                      FirebaseAuth.instance.currentUser!.displayName;
                   Get.snackbar(
-                    "${currentUser}",
+                    "${currentname}",
                     ' You are not Subscribed',
                     backgroundColor: Colors.red,
                     colorText: Colors.white,
@@ -170,6 +214,7 @@ class PreviousStudentCourseList extends StatelessWidget {
                           fontWeight: FontWeight.w700),
                     ),
                   );
+                  log("error");
                 }
               },
               child: ButtonContainerWidget(
@@ -222,3 +267,24 @@ class PreviousStudentCourseList extends StatelessWidget {
 //     },
 //   );
 // }
+        //  await FirebaseAuth.instance.currentUser!.email;
+        //         log('${currentUser}');
+        //         if (jSALiveStudents.contains(currentUser)) {
+        //           log('Correct');
+        //           await Get.to(Sample());
+        //         } else {
+        //           log('ERROR');
+        //           Get.snackbar(
+        //             "${currentUser}",
+        //             ' You are not Subscribed',
+        //             backgroundColor: Colors.red,
+        //             colorText: Colors.white,
+        //             messageText: Text(
+        //               'You are not Subscribed',
+        //               style: GoogleFonts.montserrat(
+        //                   color: Colors.white,
+        //                   fontSize: 12,
+        //                   fontWeight: FontWeight.w700),
+        //             ),
+        //           );
+        //         }

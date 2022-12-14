@@ -9,6 +9,7 @@ import 'package:scipro/screens/home_screen.dart';
 import 'package:scipro/widgets/button_Container.dart';
 import 'package:scipro/widgets/newMorphism.dart';
 
+import '../getx/naviagtion_bar.dart';
 import 'login_previous_students.dart';
 
 class StudentandFacultyLoginScreen extends StatelessWidget {

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:omni_jitsi_meet/jitsi_meet.dart';
 
 class LiveClassRoom extends StatefulWidget {
   String roomID;
+  final studentname = FirebaseAuth.instance.currentUser!.displayName;
   LiveClassRoom({
     Key? key,
     required this.roomID,
@@ -100,13 +102,7 @@ class _LiveClassRoomState extends State<LiveClassRoom> {
           SizedBox(
             height: 14.0,
           ),
-          TextField(
-            controller: subjectText,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: "Subject",
-            ),
-          ),
+
           SizedBox(
             height: 14.0,
           ),
@@ -114,7 +110,7 @@ class _LiveClassRoomState extends State<LiveClassRoom> {
             controller: nameText,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
-              labelText: "Display Name",
+              labelText: widget.studentname,
             ),
           ),
           SizedBox(

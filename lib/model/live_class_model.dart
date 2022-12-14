@@ -11,6 +11,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:scipro/screens/home_screen.dart';
 
+import '../getx/naviagtion_bar.dart';
+
 LiveCoursePaymentModel LiveCoursePaymentModelFromJson(String str) =>
     LiveCoursePaymentModel.fromJson(json.decode(str));
 
