@@ -1,22 +1,18 @@
-import 'dart:developer';
+// ignore_for_file: unnecessary_brace_in_string_interps
 
+import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:scipro/signin/sample.dart';
 import 'package:scipro/student_screens/Student_waiting_room.dart';
 import 'package:scipro/video_player/videoplayer_firebase.dart';
 import 'package:scipro/widgets/button_Container.dart';
 
-import '../model/paid_model.dart';
-
 class PreviousStudentCourseList extends StatelessWidget {
-  PreviousStudentCourseList({super.key});
+  const PreviousStudentCourseList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +40,7 @@ class PreviousStudentCourseList extends StatelessWidget {
                 if (docData.isNotEmpty) {
                   log("set");
                   Get.to(StudentWaitingRoom(
-                      courseName: "JSALiveCourse", time: ""));
+                      roomID: '', courseName: "JSALiveCourse", time: ""));
                 } else {
                   final currentname =
                       FirebaseAuth.instance.currentUser!.displayName;
@@ -146,7 +142,7 @@ class PreviousStudentCourseList extends StatelessWidget {
                 if (docData.isNotEmpty) {
                   log("set");
                   Get.to(StudentWaitingRoom(
-                      courseName: "JLALiveCourse", time: ""));
+                      roomID: '', courseName: "JLALiveCourse", time: ""));
                 } else {
                   final currentname =
                       FirebaseAuth.instance.currentUser!.displayName;

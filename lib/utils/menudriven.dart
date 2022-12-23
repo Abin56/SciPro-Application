@@ -1,12 +1,11 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scipro/screens/live_courses.dart';
 import 'package:scipro/screens/recorded_courses.dart';
-import 'package:scipro/signin/student_faculty_login_screen.dart';
-
 import '../signin/g_signin.dart';
-
+// ignore: use_key_in_widget_constructors
 class NavDrawer extends StatelessWidget {
   final auth = FirebaseAuth.instance;
   @override
@@ -15,7 +14,7 @@ class NavDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
+          const DrawerHeader(
             child: Text(""),
             decoration: BoxDecoration(
                 color: Colors.blue,
@@ -23,38 +22,38 @@ class NavDrawer extends StatelessWidget {
                     fit: BoxFit.fill, image: AssetImage('assets/images/'))),
           ),
           ListTile(
-            leading: Icon(Icons.input),
-            title: Text('Welcome'),
+            leading: const Icon(Icons.input),
+            title: const Text('Welcome'),
             onTap: () => {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => RecordedCourses()),
+                MaterialPageRoute(builder: (context) => const RecordedCourses()),
               ),
             },
           ),
           ListTile(
-            leading: Icon(Icons.verified_user),
-            title: Text('Profile'),
+            leading: const Icon(Icons.verified_user),
+            title: const Text('Profile'),
             onTap: () => {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => LiveCourses()),
+                MaterialPageRoute(builder: (context) => const LiveCourses()),
               ),
             },
           ),
           ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
+            leading: const Icon(Icons.settings),
+            title: const Text('Settings'),
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
-            leading: Icon(Icons.border_color),
-            title: Text('Feedback'),
+            leading: const Icon(Icons.border_color),
+            title: const Text('Feedback'),
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
-              leading: Icon(Icons.exit_to_app),
-              title: Text('Logout'),
+              leading: const Icon(Icons.exit_to_app),
+              title: const Text('Logout'),
               onTap: () => {
                     signOut(context),
                   }),
@@ -68,7 +67,7 @@ class NavDrawer extends StatelessWidget {
       await auth.signOut().then((value) => {
             Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => Gsignin()),
+                MaterialPageRoute(builder: (context) => const Gsignin()),
                 (route) => false)
           });
     } catch (e) {
@@ -81,7 +80,7 @@ class NavDrawer extends StatelessWidget {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("Error"),
+            title: const Text("Error"),
             content: Text(e.toString()),
           );
         });

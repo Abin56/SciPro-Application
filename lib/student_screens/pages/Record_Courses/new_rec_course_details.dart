@@ -91,13 +91,13 @@ class RecordedCourseDetailScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Course Title :',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           coursetitle,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         )
                       ],
@@ -108,13 +108,13 @@ class RecordedCourseDetailScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Faculty :',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           faculty,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         )
                       ],
@@ -125,13 +125,13 @@ class RecordedCourseDetailScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Course Fee :',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           coursefee.toString(),
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         )
                       ],
@@ -142,13 +142,13 @@ class RecordedCourseDetailScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Duration :',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           duration,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         )
                       ],
@@ -159,13 +159,13 @@ class RecordedCourseDetailScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Course ID :',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           courseId,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         )
                       ],
@@ -176,13 +176,13 @@ class RecordedCourseDetailScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Posted Date :',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           date,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         )
                       ],
@@ -193,13 +193,13 @@ class RecordedCourseDetailScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Posted Time :',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           time,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         )
                       ],

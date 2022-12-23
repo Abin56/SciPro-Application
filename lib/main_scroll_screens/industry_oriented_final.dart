@@ -1,5 +1,4 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/responsive.dart';
@@ -57,9 +56,9 @@ class _IndustryOrientedFinalState extends State<IndustryOrientedFinal> {
                   ],
                 ),
                 Container(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Color(0xecd3301e),width: 2),
+                    border: Border.all(color: const Color(0xecd3301e),width: 2),
                     borderRadius: BorderRadius.circular(2),
                     gradient: const LinearGradient(
                         colors: [Colors.white,
@@ -92,9 +91,9 @@ class _IndustryOrientedFinalState extends State<IndustryOrientedFinal> {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xecd3301e),width: 2),
+                        border: Border.all(color: const Color(0xecd3301e),width: 2),
                         borderRadius: BorderRadius.circular(2),
                         gradient: const LinearGradient(
                             colors: [Colors.white,

@@ -1,14 +1,11 @@
+// ignore_for_file: must_be_immutable
+
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:firebase_database/ui/firebase_animated_list.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:get/get.dart';
-import 'package:scipro/student_screens/pages/Record_Courses/recorded_courses.dart';
 import 'package:scipro/video_player/video_screen.dart';
-
 import '../model_classes/v_model.dart';
 
 class RecordedvideosPlayList extends StatefulWidget {

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -5,21 +7,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
 import 'package:scipro/screens/hybrid_courses.dart';
-import 'package:scipro/screens/live_classroom.dart';
-import 'package:scipro/screens/live_courses.dart';
 import 'package:scipro/student_screens/Student_waiting_room.dart';
-import 'package:scipro/student_screens/pages/Hybrid_Courses.dart';
-import 'package:scipro/student_screens/pages/Live_Courses/live_Course_Details.dart';
 import 'package:scipro/student_screens/pages/Live_Courses/live_Courses_list.dart';
 import 'package:scipro/student_screens/pages/Record_Courses/recorded_courses.dart';
 import 'package:scipro/student_screens/pages/faculties.dart';
-import 'package:scipro/student_screens/pages/live_Courses.dart';
 import 'package:scipro/student_screens/pages/live_Mock_test.dart';
-import 'package:scipro/student_screens/pages/record_Courses.dart';
 import 'package:scipro/student_screens/pages/study_materials_screen.dart';
-import 'package:scipro/video_player/videoplayer_firebase.dart';
 import 'package:scipro/widgets/button_Container.dart';
 
 class LiveCourseListScreen extends StatefulWidget {
@@ -71,7 +65,7 @@ class _LiveCourseListScreenState extends State<LiveCourseListScreen> {
                   .snapshots(),
               builder: (context, snapshots) {
                 return (snapshots.connectionState == ConnectionState.waiting)
-                    ? Center(
+                    ? const Center(
                         child: CircularProgressIndicator.adaptive(),
                       )
                     : ListView.separated(
@@ -88,6 +82,7 @@ class _LiveCourseListScreenState extends State<LiveCourseListScreen> {
                                 log(data['courseTime']);
 
                                 Get.to(StudentWaitingRoom(
+                                  roomID:data['roomID'] ,
                                   courseName: data['courseName'],
                                   time: data['courseTime'],
                                 ));
@@ -125,8 +120,8 @@ class _LiveCourseListScreenState extends State<LiveCourseListScreen> {
 List screens = [
   RecordedCoursesListScreen(),
   LiveCoursesListScreen(),
-  HybridCourses(),
-  FacultieScreen(),
-  StudyMaterialsScreen(),
-  LiveMockTestsScreen()
+  const HybridCourses(),
+  const FacultieScreen(),
+  const StudyMaterialsScreen(),
+  const LiveMockTestsScreen()
 ];

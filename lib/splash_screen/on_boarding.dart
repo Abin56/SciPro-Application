@@ -1,17 +1,17 @@
 // ignore_for_file: deprecated_member_use
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:scipro/signin/g_signin.dart';
+import 'package:scipro/signin/student_faclty_profilecreation.dart';
 import 'package:scipro/widgets/button_Container.dart';
 
 import '../screens/home_screen.dart';
 
 class Onboardingpage extends StatelessWidget {
-  Onboardingpage({Key? key}) : super(key: key);
+  const Onboardingpage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -68,10 +68,10 @@ class Onboardingpage extends StatelessWidget {
   }
 
   void goToHome(context) => Navigator.of(context)
-      .pushReplacement(MaterialPageRoute(builder: (_) => HomeScreen()));
+      .pushReplacement(MaterialPageRoute(builder: (_) => const HomeScreen()));
 
-  void goToOnboard(context) => Navigator.of(context)
-      .pushReplacement(MaterialPageRoute(builder: (_) => Onboardingpage()));
+  void goToOnboard(context) => Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (_) => const Onboardingpage()));
 
   // Widget buildimages(String path) {
   PageDecoration getPageDecoration() => const PageDecoration(
@@ -106,8 +106,7 @@ class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () {
-          Navigator.of(context)
-              .pushReplacement(MaterialPageRoute(builder: (ctx) => Gsignin()));
+          Get.offAll(StudentandFacultyCreationPage());
         },
         child: ButtonContainerWidget(
           curving: 30,

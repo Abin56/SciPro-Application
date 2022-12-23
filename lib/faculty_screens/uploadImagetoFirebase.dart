@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors_in_immutables
+// ignore_for_file: file_names
 
 import 'dart:developer';
 import 'dart:io';
@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 import 'package:scipro/faculty_screens/faculty_home_screen.dart';
 
 class UploadImageforFaculty extends StatefulWidget {
-  UploadImageforFaculty({super.key});
+  const UploadImageforFaculty({super.key});
 
   @override
   State<UploadImageforFaculty> createState() =>

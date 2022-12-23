@@ -1,30 +1,35 @@
-import 'dart:developer';
+// ignore_for_file: depend_on_referenced_packages
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:scipro/bloc/auth_cubit.dart';
-import 'package:scipro/model_classes/v_model.dart';
-import 'package:scipro/screens/home_screen.dart';
 import 'package:scipro/signin/g_signin.dart';
-import 'package:scipro/signin/student_faclty_profilecreation.dart';
-import 'package:scipro/signin/student_faculty_login_screen.dart';
 import 'package:scipro/splash_screen/on_boarding.dart';
 import 'package:scipro/splash_screen/splash_screen.dart';
-import 'package:scipro/student_screens/Student_waiting_room.dart';
-import 'package:scipro/video_player/video_screen.dart';
-import 'package:scipro/video_player/videoplayer_firebase.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'bloc/auth_state.dart';
-import 'methods/auth_methods.dart';
+import 'model/hive/profile_model.dart';
 
 bool? seenonboard;
+late Box<DBStudentList> studentdataDB;
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await Hive.initFlutter();
+  if (!Hive.isAdapterRegistered(DBStudentListAdapter().typeId)) {
+    Hive.registerAdapter(DBStudentListAdapter());
+  }
+  studentdataDB = await Hive.openBox<DBStudentList>('studentlist');
+  SharedPreferences pref = await SharedPreferences.getInstance();
+  seenonboard = pref.getBool('seenonboard') ?? false;
   await Firebase.initializeApp();
-  //
+
   runApp(const MyApp());
 }
 
@@ -49,45 +54,18 @@ class MyApp extends StatelessWidget {
               },
               builder: (context, state) {
                 if (state is AuthLoggedInState) {
-                  return Splashscreen();
+                  return const Splashscreen();
                 } else if (state is AuthLoggedOutState) {
-                  return Gsignin();
+                  return const Gsignin();
                 } else {
-                  return Onboardingpage();
+                  return const Onboardingpage();
                 }
               },
             ),
             debugShowCheckedModeBanner: false,
           ),
         );
-        ;
       },
     );
   }
 }
-// GetMaterialApp(
-//           title: 'Flutter Demo',
-//           theme: ThemeData(
-//             primarySwatch: Colors.blue,
-//           ),
-//           debugShowCheckedModeBanner: false,
-//           // home: StudentandFacultyCreationPage(),
-//           home: StreamBuilder(
-//             stream: AuthMethods().authChanges,
-//             builder: (context, snapshot) {
-//               if (snapshot.connectionState == ConnectionState.waiting) {
-//                 double width = MediaQuery.of(context).size.width;
-//                 double height = MediaQuery.of(context).size.height;
-//                 log('Width${width.toString()}');
-//                 log('Height${height.toString()}');
-//                 return const Center(
-//                   child: CircularProgressIndicator(),
-//                 );
-//               }
-//               if (snapshot.hasData) {
-//                 return  StudentandFacultyLoginScreen();
-//               }
-//               return const Gsignin();
-//             },
-//           ),
-//         )

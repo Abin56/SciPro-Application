@@ -1,9 +1,5 @@
+// ignore_for_file: sort_child_properties_last, deprecated_member_use
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
-import '../utils/colors.dart';
-
 class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;

@@ -1,15 +1,11 @@
-import 'dart:math';
+// ignore_for_file: file_names, non_constant_identifier_names, must_be_immutable, prefer_const_constructors, unnecessary_string_interpolations, prefer_interpolation_to_compose_strings
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:scipro/model/live_course_model.dart';
-import 'package:scipro/payment_RazorPay/payment_screen.dart';
 import 'package:scipro/student_screens/pages/Live_Courses/live_Course_Details.dart';
-import 'package:scipro/student_screens/pages/Record_Courses/recorded_courses_Details.dart';
 import 'package:scipro/widgets/button_Container.dart';
 
 var arec_CourseID = "";
@@ -50,6 +46,7 @@ class LiveCoursesListScreen extends StatelessWidget {
                             GestureDetector(
                               onTap: () async {
                                 await Get.to(LiveCourseDetailScreen(
+                                  roomID: data.roomID,
                                     coursetitle: data.courseTitle,
                                     faculty: data.facultyName,
                                     coursefee: data.courseFee,

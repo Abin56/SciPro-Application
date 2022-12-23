@@ -1,7 +1,7 @@
-import 'dart:io';
+// ignore_for_file: must_be_immutable, sort_child_properties_last
 
+import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:omni_jitsi_meet/jitsi_meet.dart';
@@ -46,11 +46,11 @@ class _LiveClassRoomState extends State<LiveClassRoom> {
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
+                    SizedBox(
                       width: width * 0.30,
                       child: meetConfig(),
                     ),
-                    Container(
+                    SizedBox(
                         width: width * 0.60,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -60,7 +60,7 @@ class _LiveClassRoomState extends State<LiveClassRoom> {
                                 width: width * 0.60 * 0.70,
                                 height: width * 0.60 * 0.70,
                                 child: JitsiMeetConferencing(
-                                  extraJS: [
+                                  extraJS: const [
                                     // extraJs setup example
                                     '<script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>'
                                   ],
@@ -79,7 +79,7 @@ class _LiveClassRoomState extends State<LiveClassRoom> {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          SizedBox(
+          const SizedBox(
             height: 16.0,
           ),
           //TextField(
@@ -89,55 +89,55 @@ class _LiveClassRoomState extends State<LiveClassRoom> {
           //      labelText: "Server URL",
           //       hintText: "Hint: Leave empty for meet.jitsi.si"),
           // ),
-          SizedBox(
+          const SizedBox(
             height: 14.0,
           ),
           TextField(
             controller: roomText,
             decoration: InputDecoration(
-              border: OutlineInputBorder(),
+              border: const OutlineInputBorder(),
               labelText: widget.roomID,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 14.0,
           ),
 
-          SizedBox(
+          const SizedBox(
             height: 14.0,
           ),
           TextField(
             controller: nameText,
             decoration: InputDecoration(
-              border: OutlineInputBorder(),
+              border: const OutlineInputBorder(),
               labelText: widget.studentname,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 14.0,
           ),
           CheckboxListTile(
-            title: Text("Audio Only"),
+            title: const Text("Audio Only"),
             value: isAudioOnly,
             onChanged: _onAudioOnlyChanged,
           ),
-          SizedBox(
+          const SizedBox(
             height: 14.0,
           ),
           CheckboxListTile(
-            title: Text("Audio Muted"),
+            title: const Text("Audio Muted"),
             value: isAudioMuted,
             onChanged: _onAudioMutedChanged,
           ),
-          SizedBox(
+          const SizedBox(
             height: 14.0,
           ),
           CheckboxListTile(
-            title: Text("Video Muted"),
+            title: const Text("Video Muted"),
             value: isVideoMuted,
             onChanged: _onVideoMutedChanged,
           ),
-          Divider(
+          const Divider(
             height: 48.0,
             thickness: 2.0,
           ),
@@ -148,7 +148,7 @@ class _LiveClassRoomState extends State<LiveClassRoom> {
               onPressed: () {
                 _joinMeeting();
               },
-              child: Text(
+              child: const Text(
                 "Join Meeting",
                 style: TextStyle(color: Colors.white),
               ),
@@ -157,7 +157,7 @@ class _LiveClassRoomState extends State<LiveClassRoom> {
                       MaterialStateColor.resolveWith((states) => Colors.blue)),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 48.0,
           ),
         ],

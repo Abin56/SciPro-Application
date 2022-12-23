@@ -20,7 +20,7 @@ class ExploreDrawer extends StatelessWidget {
                 onTap: () {
                   //Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
                 },
-                child: Text(
+                child: const Text(
                   'Login',
                   style: TextStyle(color: Colors.white, fontSize: 22),
                 ),
@@ -34,7 +34,7 @@ class ExploreDrawer extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {},
-                child: Text(
+                child: const Text(
                   'Loq Out',
                   style: TextStyle(color: Colors.white, fontSize: 22),
                 ),
@@ -48,7 +48,7 @@ class ExploreDrawer extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {},
-                child: Text(
+                child: const Text(
                   'Contact Us',
                   style: TextStyle(color: Colors.white, fontSize: 22),
                 ),
@@ -62,7 +62,7 @@ class ExploreDrawer extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {},
-                child: Text(
+                child: const Text(
                   '',
                   style: TextStyle(color: Colors.white, fontSize: 22),
                 ),

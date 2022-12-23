@@ -1,17 +1,15 @@
-import 'dart:developer';
+// ignore_for_file: must_be_immutable, unused_field, sort_child_properties_last, unnecessary_brace_in_string_interps
 
+import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:scipro/main_scroll_screens/current_course_slider.dart';
 import 'package:scipro/main_scroll_screens/current_courses_mainpage.dart';
-import 'package:scipro/main_scroll_screens/industry_oriented_final.dart';
 import 'package:scipro/main_scroll_screens/our_popular_courses.dart';
 import 'package:scipro/screens/listof_subscribe.dart';
-import 'package:scipro/student_screens/recorded_sub_course_list.dart';
 import 'package:scipro/utils/explore_drawer.dart';
 
 import '../methods/auth_methods.dart';
@@ -35,9 +33,6 @@ class _MyHomePageState extends State<MyHomePage> {
   final ScrollController _scrollController = ScrollController();
   double _scrollPosition = 0;
   double _opacity = 0;
-  int _current = 0;
-  int _currentIndex = 0;
-  int _sub = 0;
 
   final List<String> imagesList = [
     'assets/divya.png',
@@ -165,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.all(5),
+                      margin: const EdgeInsets.all(5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -185,7 +180,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 20.0),
+                      margin: const EdgeInsets.only(left: 20.0),
                       child: Row(
                         children: [
                           const Text(
@@ -217,38 +212,42 @@ class _MyHomePageState extends State<MyHomePage> {
                         return CustomButton(
                             text: 'Subscribed Courses',
                             onPressed: () async {
-                              Get.to(UserSelectingCourselisting());
+                              Get.to(const UserSelectingCourselisting());
                             });
                       } else if (widget.liveCourseID.isNotEmpty) {
                         return CustomButton(
                             text: 'Subscribed Courses',
                             onPressed: () async {
-                              Get.to(UserSelectingCourselisting());
+                              Get.to(const UserSelectingCourselisting());
                             });
                       } else if (widget.liveCourseID.isNotEmpty &&
                           widget.courseID.isNotEmpty) {
                         return CustomButton(
                             text: 'Subscribed Courses',
                             onPressed: () async {
-                              Get.to(UserSelectingCourselisting());
+                              Get.to(const UserSelectingCourselisting());
                             });
                       } else if (widget.liveCourseID.isEmpty &&
                           widget.courseID.isEmpty) {
-                        return Text('');
+                        return const SizedBox(
+                          height: 50,
+                        );
                       } else {
-                        return Text('');
+                        return const SizedBox(
+                          height: 50,
+                        );
                       }
                     }),
                   ],
                 ),
               ),
             ]),
-            CurrentCourseSlider(),
+            const CurrentCourseSlider(),
             SizedBox(
               height: 50.h,
             ),
-            OurPopularCourses(),
-            CurrentCoursesMainPage()
+            const OurPopularCourses(),
+            const CurrentCoursesMainPage()
           ],
         ),
       ),

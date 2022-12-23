@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
@@ -17,12 +16,12 @@ termsAndConditions(BuildContext context) {
 
   // set up the AlertDialog
   AlertDialog alert = AlertDialog(
-    backgroundColor: Color.fromARGB(255, 33, 0, 39),
+    backgroundColor: const Color.fromARGB(255, 33, 0, 39),
     title: const Text(
       "Privacy Policy",
       style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
     ),
-    content: Container(
+    content: SizedBox(
       // width: 300,
       height: 300,
       child: SingleChildScrollView(
@@ -89,12 +88,12 @@ contactus(BuildContext context) {
 
   // set up the AlertDialog
   AlertDialog alert = AlertDialog(
-    backgroundColor: Color.fromARGB(255, 33, 0, 39),
+    backgroundColor: const Color.fromARGB(255, 33, 0, 39),
     title: const Text(
       "Contact us",
       style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold),
     ),
-    content: Container(
+    content: SizedBox(
       // width: 300,
       height: 300,
       child: SingleChildScrollView(

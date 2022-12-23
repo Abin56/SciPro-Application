@@ -1,15 +1,11 @@
-// ignore_for_file: sort_child_properties_last, must_be_immutable
-import 'dart:developer';
+// ignore_for_file: sort_child_properties_last, must_be_immutable, unused_catch_clause, empty_catches
 import 'dart:math';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
-import 'package:scipro/model/payment_model.dart';
 import 'package:slider_button/slider_button.dart';
 import '../model/live_class_model.dart';
 import '../widgets/button_Container.dart';
@@ -22,12 +18,14 @@ class LiveCoursePayment extends StatefulWidget {
   String courseID;
   String totalPrice;
   String courseName;
-    String courseTime;
+  String courseTime;
+  String roomID;
   LiveCoursePayment(
       {required this.totalPrice,
       required this.courseID,
       required this.courseName,
       required this.courseTime,
+      required this.roomID,
       super.key});
 
   @override
@@ -65,8 +63,10 @@ class _LiveCoursePaymentState extends State<LiveCoursePayment> {
   void _handlePaymentSuccess(PaymentSuccessResponse response) async {
     // After paymentSuccessFull section>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
     final userpaymentData = LiveCoursePaymentModel(
-       courseTime:widget.courseTime ,
-      useremail: widget.userEmail.toString(),
+        roomID: widget.roomID,
+        totalPrice: widget.totalPrice,
+        courseTime: widget.courseTime,
+        useremail: widget.userEmail.toString(),
         userName: widget.userName.toString(),
         courseid: widget.courseID,
         uid: widget.user.toString(),
@@ -232,19 +232,20 @@ class _LiveCoursePaymentState extends State<LiveCoursePayment> {
                   baseColor: Colors.blue,
                   backgroundColor: const Color.fromARGB(255, 26, 32, 44),
                   action: () async {
-                    double paymentPrice = 1 * 100;
+                    double ttotalPrice = double.parse(widget.totalPrice);
+                    double paymentPrice = ttotalPrice * 100;
                     // Get.off(PaymentScreen());
                     //
                     var options = {
-                      'key': 'rzp_test_4H63BqbBLQlmNQ',
+                      'key': 'rzp_live_WkqZiZtSI6LGQ9',
                       //amount will be multiple of 100
                       'amount': paymentPrice.toString(), //so its pay 500
-                      'name': '',
+                      'name': 'VECTOR WIND',
                       'description': 'SciPro',
                       'timeout': 300, // in seconds
                       'prefill': {
                         'contact': '9544782189',
-                        'email': 'leptonscipro@gmail.com'
+                        'email': 'binojkumarvc@gmail.com'
                       }
                     };
 

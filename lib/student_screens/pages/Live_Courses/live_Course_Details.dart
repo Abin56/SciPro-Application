@@ -1,6 +1,6 @@
+// ignore_for_file: file_names, unnecessary_import, must_be_immutable, prefer_interpolation_to_compose_strings
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -17,6 +17,7 @@ class LiveCourseDetailScreen extends StatelessWidget {
   String courseId;
   String time;
   String date;
+  String roomID;
   LiveCourseDetailScreen(
       {required this.coursetitle,
       required this.faculty,
@@ -25,6 +26,7 @@ class LiveCourseDetailScreen extends StatelessWidget {
       required this.courseId,
       required this.date,
       required this.time,
+      required this.roomID,
       super.key});
 
   @override
@@ -90,13 +92,13 @@ class LiveCourseDetailScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Course Title :',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           coursetitle,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         )
                       ],
@@ -107,13 +109,13 @@ class LiveCourseDetailScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Faculty :',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           faculty,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         )
                       ],
@@ -124,13 +126,13 @@ class LiveCourseDetailScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Course Fee :',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           coursefee.toString(),
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         )
                       ],
@@ -141,13 +143,13 @@ class LiveCourseDetailScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Duration :',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           duration,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         )
                       ],
@@ -158,13 +160,13 @@ class LiveCourseDetailScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Course ID :',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           courseId,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         )
                       ],
@@ -175,13 +177,13 @@ class LiveCourseDetailScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Posted Date :',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           date,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         )
                       ],
@@ -192,13 +194,13 @@ class LiveCourseDetailScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Posted Time :',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
                           time,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         )
                       ],
@@ -213,6 +215,7 @@ class LiveCourseDetailScreen extends StatelessWidget {
             GestureDetector(
               onTap: () async {
                 Get.to(LiveCoursePayment(
+                    roomID: roomID,
                     courseTime: time,
                     courseName: coursetitle,
                     totalPrice: coursefee,
@@ -220,7 +223,7 @@ class LiveCourseDetailScreen extends StatelessWidget {
               },
               child: ButtonContainerWidget(
                 curving: 30,
-                colorindex: 4,
+                colorindex: 5,
                 height: 60.h,
                 width: 200.w,
                 child: Center(

@@ -1,15 +1,19 @@
+// ignore_for_file: curly_braces_in_flow_control_structures, file_names
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scipro/screens/live_classroom.dart';
-import 'package:scipro/utils/responsive.dart';
 import 'package:scipro/widgets/button_Container.dart';
 
 class StudentWaitingRoom extends StatefulWidget {
   String courseName;
   String time;
-  StudentWaitingRoom({Key? key, required this.courseName, required this.time})
+  String roomID;
+  StudentWaitingRoom(
+      {Key? key,
+      required this.courseName,
+      required this.roomID,
+      required this.time})
       : super(key: key);
 
   @override
@@ -29,7 +33,6 @@ class _StudentWaitingRoomState extends State<StudentWaitingRoom> {
 
   @override
   Widget build(BuildContext context) {
-    var a;
     return Scaffold(
         appBar: AppBar(
           title: const Text(
@@ -91,7 +94,7 @@ class _StudentWaitingRoomState extends State<StudentWaitingRoom> {
                         ),
                       ],
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 StreamBuilder(
@@ -137,7 +140,7 @@ class _StudentWaitingRoomState extends State<StudentWaitingRoom> {
                         ],
                       );
                     }),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 StreamBuilder(
@@ -155,9 +158,7 @@ class _StudentWaitingRoomState extends State<StudentWaitingRoom> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => LiveClassRoom(
-                                              roomID: snapshot.data!.snapshot
-                                                  .value["course"]
-                                                  .toString(),
+                                              roomID: widget.roomID,
                                             )));
                               },
                               child: ButtonContainerWidget(
@@ -175,7 +176,7 @@ class _StudentWaitingRoomState extends State<StudentWaitingRoom> {
                                   ),
                                 ),
                               )),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         const Text(

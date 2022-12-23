@@ -1,15 +1,9 @@
-import 'dart:io';
-import 'dart:typed_data';
+// ignore_for_file: must_be_immutable, library_private_types_in_public_api
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
-import 'package:scipro/faculty_screens/faculty_login_id_screen.dart';
 import 'package:scipro/signin/student_faculty_login_screen.dart';
-import 'package:scipro/utils/tab_bar_contents.dart';
 
 class FacultyHomePage extends StatefulWidget {
   String imagePath;
@@ -41,19 +35,10 @@ class FacultyHomePage extends StatefulWidget {
 }
 
 class _FacultyHomePageState extends State<FacultyHomePage> {
-  double _opacity = 0;
-  final double _scrollPosition = 0;
   var loginUser = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
-    var loginUser = FirebaseAuth.instance.currentUser;
-    String user = loginUser.toString();
-    double width = MediaQuery.of(context).size.width;
-    var screenSize = MediaQuery.of(context).size;
-    _opacity = _scrollPosition < screenSize.height * 0.40
-        ? _scrollPosition / (screenSize.height * 0.40)
-        : 1;
 
     TextEditingController name = TextEditingController();
     TextEditingController place = TextEditingController();
@@ -70,29 +55,7 @@ class _FacultyHomePageState extends State<FacultyHomePage> {
     CollectionReference ref =
         FirebaseFirestore.instance.collection('Faculties');
 
-    double progress = 0.0;
 
-    uploadFile() async {
-      final User? user = FirebaseAuth.instance.currentUser;
-      var imageFile =
-          FirebaseStorage.instance.ref().child(userId).child("/.jpg");
-      // UploadTask task = imageFile.putFile(file!);
-      //TaskSnapshot snapshot = await task;
-      //imageUrl = await snapshot.ref.getDownloadURL();
-      await FirebaseFirestore.instance.collection('faculty').doc(userId).set(({
-            "imageUrl": widget.imagePath,
-            'name': name.text,
-            'place': place.text,
-            'subject': subject.text,
-            'email': email.text,
-            'mobilenumber': mobilenumber.text,
-            'aadhar': aadharnumber.text,
-            'bankaccountnumber': bankaccountnumber.text,
-            'bank': bank.text,
-            'ifsc': ifsc.text,
-          }));
-      //print(url);
-    }
 
     return Scaffold(
         //backgroundColor: Colors.blueAccent,
@@ -222,7 +185,7 @@ class _FacultyHomePageState extends State<FacultyHomePage> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (_) => StudentandFacultyLoginScreen()));
+                                builder: (_) => const StudentandFacultyLoginScreen()));
                       });
                     },
                     child: const Text("save",

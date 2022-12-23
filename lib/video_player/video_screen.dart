@@ -1,10 +1,12 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:better_player/better_player.dart';
 import 'package:flutter/material.dart';
 
 class VideoScreen extends StatefulWidget {
    final String name,mediaUrl;
 
-  const VideoScreen({required this.name, required this.mediaUrl});
+  const VideoScreen({super.key, required this.name, required this.mediaUrl});
 
   @override
   _VideoScreenState createState() => _VideoScreenState();

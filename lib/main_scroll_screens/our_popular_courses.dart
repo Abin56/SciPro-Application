@@ -1,11 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import 'package:scipro/main_scroll_screens/popular_details.dart';
 import 'package:scipro/utils/app_colors.dart';
-
 import '../utils/responsive.dart';
 
 class OurPopularCourses extends StatefulWidget {
@@ -22,7 +19,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
           child: ResponsiveWidget.isSmallScreen(context)
               ? Column(
                   children: [
@@ -56,13 +53,13 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                           children: [
                             InkWell(
                               onTap: () {
-                                Get.to(PopularOnTapDetailsFirst());
+                                Get.to(const PopularOnTapDetailsFirst());
                               },
                               child: Container(
                                 width: screenSize.width - 1,
                                 height: 220.h,
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
+                                    image: const DecorationImage(
                                         image: AssetImage(
                                           "assets/images/main2ancy.jpg",
                                         ),
@@ -79,7 +76,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                             ),
                             InkWell(
                               onTap: () {
-                                Get.to(PopularOnTapDetailsFirst());
+                                Get.to(const PopularOnTapDetailsFirst());
                               },
                               child: Container(
                                   alignment: Alignment.center,
@@ -112,7 +109,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
@@ -141,7 +138,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                 width: screenSize.width - 1,
                                 height: 200,
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
+                                    image: const DecorationImage(
                                         image: AssetImage(
                                           "assets/images/main6akhilmon.jpg",
                                         ),
@@ -156,12 +153,12 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                         end: Alignment.topRight)),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 40,
                             ),
                             InkWell(
                               onTap: () {
-                                Get.to(PopularOnTapDetailsSecond());
+                                Get.to(const PopularOnTapDetailsSecond());
                               },
                               child: Container(
                                   alignment: Alignment.center,
@@ -194,7 +191,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
@@ -223,7 +220,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                 width: screenSize.width - 1,
                                 height: 200,
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
+                                    image: const DecorationImage(
                                         image: AssetImage(
                                           "assets/images/main6gopika.jpg",
                                         ),
@@ -240,7 +237,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                             ),
                             InkWell(
                               onTap: () {
-                                Get.to(PopularOnTapDetailsThird());
+                                Get.to(const PopularOnTapDetailsThird());
                               },
                               child: Container(
                                   alignment: Alignment.center,
@@ -292,7 +289,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                           width: screenSize.width / 3.5,
                           decoration: BoxDecoration(
                               border: Border.all(
-                                  color: Color(0xecd3301e), width: 2),
+                                  color: const Color(0xecd3301e), width: 2),
                               borderRadius: BorderRadius.circular(10),
                               gradient: const LinearGradient(
                                   colors: [
@@ -312,7 +309,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                   width: screenSize.width / 3.5 - 1,
                                   height: 250,
                                   decoration: BoxDecoration(
-                                      image: DecorationImage(
+                                      image: const DecorationImage(
                                           image: AssetImage(
                                             "assets/images/main2ancy.jpg",
                                           ),
@@ -337,7 +334,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                         screenSize.height * 1 / 30),
                                     decoration: BoxDecoration(
                                         border: Border.all(
-                                            color: Color(0xecd3301e), width: 2),
+                                            color: const Color(0xecd3301e), width: 2),
                                         borderRadius: BorderRadius.circular(
                                             screenSize.height * 1 / 10),
                                         gradient: const LinearGradient(
@@ -358,14 +355,14 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 40,
                         ),
                         Container(
                           width: screenSize.width / 3.5,
                           decoration: BoxDecoration(
                               border: Border.all(
-                                  color: Color(0xecd3301e), width: 2),
+                                  color: const Color(0xecd3301e), width: 2),
                               borderRadius: BorderRadius.circular(10),
                               gradient: const LinearGradient(
                                   colors: [
@@ -382,7 +379,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                   width: screenSize.width / 3.5 - 1,
                                   height: 250,
                                   decoration: BoxDecoration(
-                                      image: DecorationImage(
+                                      image: const DecorationImage(
                                           image: AssetImage(
                                             "assets/images/main6akhilmon.jpg",
                                           ),
@@ -397,12 +394,12 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                           end: Alignment.topRight)),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 40,
                               ),
                               InkWell(
                                 onTap: () {
-                                  Get.to(PopularOnTapDetailsSecond());
+                                  Get.to(const PopularOnTapDetailsSecond());
                                 },
                                 child: Container(
                                     alignment: Alignment.center,
@@ -412,7 +409,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                         screenSize.height * 1 / 30),
                                     decoration: BoxDecoration(
                                         border: Border.all(
-                                            color: Color(0xecd3301e), width: 2),
+                                            color: const Color(0xecd3301e), width: 2),
                                         borderRadius: BorderRadius.circular(
                                             screenSize.height * 1 / 10),
                                         gradient: const LinearGradient(
@@ -433,14 +430,14 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 40,
                         ),
                         Container(
                           width: screenSize.width / 3.5,
                           decoration: BoxDecoration(
                               border: Border.all(
-                                  color: Color(0xecd3301e), width: 2),
+                                  color: const Color(0xecd3301e), width: 2),
                               borderRadius: BorderRadius.circular(10),
                               gradient: const LinearGradient(
                                   colors: [
@@ -460,7 +457,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                   width: screenSize.width / 3.5 - 1,
                                   height: 250,
                                   decoration: BoxDecoration(
-                                      image: DecorationImage(
+                                      image: const DecorationImage(
                                           image: AssetImage(
                                             "assets/images/main6gopika.jpg",
                                           ),
@@ -485,7 +482,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                         screenSize.height * 1 / 30),
                                     decoration: BoxDecoration(
                                         border: Border.all(
-                                            color: Color(0xecd3301e), width: 2),
+                                            color: const Color(0xecd3301e), width: 2),
                                         borderRadius: BorderRadius.circular(
                                             screenSize.height * 1 / 10),
                                         gradient: const LinearGradient(
@@ -511,13 +508,13 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                   ],
                 ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: ResponsiveWidget.isSmallScreen(context)
                 ? Column(
                     children: [
@@ -545,7 +542,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                 width: screenSize.width - 1,
                                 height: 200,
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
+                                    image: const DecorationImage(
                                         image: AssetImage(
                                           "assets/images/mainexam1.jpg",
                                         ),
@@ -562,7 +559,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                             ),
                             InkWell(
                               onTap: () {
-                                Get.to(PopularOnTapDetailsFour());
+                                Get.to(const PopularOnTapDetailsFour());
                               },
                               child: Container(
                                   alignment: Alignment.center,
@@ -594,7 +591,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Container(
@@ -621,7 +618,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                 width: screenSize.width - 1,
                                 height: 200,
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
+                                    image: const DecorationImage(
                                         image: AssetImage(
                                           "assets/images/main8sara.jpg",
                                         ),
@@ -636,7 +633,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                         end: Alignment.topRight)),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 40,
                             ),
                             InkWell(
@@ -671,7 +668,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Padding(
@@ -700,7 +697,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                   width: screenSize.width - 1,
                                   height: 200,
                                   decoration: BoxDecoration(
-                                      image: DecorationImage(
+                                      image: const DecorationImage(
                                           image: AssetImage(
                                             "assets/images/embed2.jpg",
                                           ),
@@ -717,7 +714,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  Get.to(ComingSoon());
+                                  Get.to(const ComingSoon());
                                 },
                                 child: Container(
                                     alignment: Alignment.center,
@@ -760,7 +757,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                         width: screenSize.width / 3.5,
                         decoration: BoxDecoration(
                             border:
-                                Border.all(color: Color(0xecd3301e), width: 2),
+                                Border.all(color: const Color(0xecd3301e), width: 2),
                             borderRadius: BorderRadius.circular(10),
                             gradient: const LinearGradient(
                                 colors: [
@@ -780,7 +777,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                 width: screenSize.width / 3.5 - 1,
                                 height: 250,
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
+                                    image: const DecorationImage(
                                         image: AssetImage(
                                           "assets/images/mainexam1.jpg",
                                         ),
@@ -805,7 +802,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                       screenSize.height * 1 / 30),
                                   decoration: BoxDecoration(
                                       border: Border.all(
-                                          color: Color(0xecd3301e), width: 2),
+                                          color: const Color(0xecd3301e), width: 2),
                                       borderRadius: BorderRadius.circular(
                                           screenSize.height * 1 / 10),
                                       gradient: const LinearGradient(
@@ -825,14 +822,14 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 40,
                       ),
                       Container(
                         width: screenSize.width / 3.5,
                         decoration: BoxDecoration(
                             border:
-                                Border.all(color: Color(0xecd3301e), width: 2),
+                                Border.all(color: const Color(0xecd3301e), width: 2),
                             borderRadius: BorderRadius.circular(10),
                             gradient: const LinearGradient(
                                 colors: [
@@ -852,7 +849,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                 width: screenSize.width / 3.5 - 1,
                                 height: 250,
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
+                                    image: const DecorationImage(
                                         image: AssetImage(
                                           "assets/images/main8sara.jpg",
                                         ),
@@ -867,12 +864,12 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                         end: Alignment.topRight)),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 40,
                             ),
                             InkWell(
                               onTap: () {
-                                Get.to(PopularOnTapDetailsSix());
+                                Get.to(const PopularOnTapDetailsSix());
                               },
                               child: Container(
                                   alignment: Alignment.center,
@@ -882,7 +879,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                       screenSize.height * 1 / 30),
                                   decoration: BoxDecoration(
                                       border: Border.all(
-                                          color: Color(0xecd3301e), width: 2),
+                                          color: const Color(0xecd3301e), width: 2),
                                       borderRadius: BorderRadius.circular(
                                           screenSize.height * 1 / 10),
                                       gradient: const LinearGradient(
@@ -902,14 +899,14 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       Container(
                         width: screenSize.width / 3.5,
                         decoration: BoxDecoration(
                             border:
-                                Border.all(color: Color(0xecd3301e), width: 2),
+                                Border.all(color: const Color(0xecd3301e), width: 2),
                             borderRadius: BorderRadius.circular(10),
                             gradient: const LinearGradient(
                                 colors: [
@@ -926,7 +923,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                 width: screenSize.width / 3.5 - 1,
                                 height: 250,
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
+                                    image: const DecorationImage(
                                         image: AssetImage(
                                           "assets/images/embed2.jpg",
                                         ),
@@ -951,7 +948,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                       screenSize.height * 1 / 30),
                                   decoration: BoxDecoration(
                                       border: Border.all(
-                                          color: Color(0xecd3301e), width: 2),
+                                          color: const Color(0xecd3301e), width: 2),
                                       borderRadius: BorderRadius.circular(
                                           screenSize.height * 1 / 10),
                                       gradient: const LinearGradient(
@@ -975,13 +972,13 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                   ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: ResponsiveWidget.isSmallScreen(context)
                 ? Column(
                     children: [
@@ -1009,7 +1006,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                 width: screenSize.width - 1,
                                 height: 200,
                                 decoration: BoxDecoration(
-                                    image: DecorationImage(
+                                    image: const DecorationImage(
                                         image: AssetImage(
                                           "assets/images/main10vishnu.jpg",
                                         ),
@@ -1026,7 +1023,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                             ),
                             InkWell(
                               onTap: () {
-                                Get.to(PopularOnTapDetailsSeven());
+                                Get.to(const PopularOnTapDetailsSeven());
                               },
                               child: Container(
                                   alignment: Alignment.center,
@@ -1058,7 +1055,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Padding(
@@ -1087,7 +1084,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                   width: screenSize.width - 1,
                                   height: 200,
                                   decoration: BoxDecoration(
-                                      image: DecorationImage(
+                                      image: const DecorationImage(
                                           image: AssetImage(
                                             "assets/images/main11archanashan.jpg",
                                           ),
@@ -1102,12 +1099,12 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                           end: Alignment.topRight)),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 40,
                               ),
                               InkWell(
                                 onTap: () {
-                                  Get.to(PopularOnTapDetailsEight());
+                                  Get.to(const PopularOnTapDetailsEight());
                                 },
                                 child: Container(
                                     alignment: Alignment.center,
@@ -1141,7 +1138,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Padding(
@@ -1170,7 +1167,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                   width: screenSize.width - 1,
                                   height: 200,
                                   decoration: BoxDecoration(
-                                      image: DecorationImage(
+                                      image: const DecorationImage(
                                           image: AssetImage(
                                             "assets/images/main12nandhana.jpg",
                                           ),
@@ -1187,7 +1184,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  Get.to(PopularOnTapDetailsNine());
+                                  Get.to(const PopularOnTapDetailsNine());
                                 },
                                 child: Container(
                                     alignment: Alignment.center,
@@ -1221,7 +1218,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Padding(
@@ -1250,7 +1247,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                   width: screenSize.width - 1,
                                   height: 200,
                                   decoration: BoxDecoration(
-                                      image: DecorationImage(
+                                      image: const DecorationImage(
                                           image: AssetImage(
                                             "assets/images/gopik_language.JPG",
                                           ),
@@ -1267,7 +1264,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  Get.to(PopularOnTapDetailsTen());
+                                  Get.to(const PopularOnTapDetailsTen());
                                 },
                                 child: Container(
                                     alignment: Alignment.center,
@@ -1312,7 +1309,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                             width: screenSize.width / 3.5,
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                    color: Color(0xecd3301e), width: 2),
+                                    color: const Color(0xecd3301e), width: 2),
                                 borderRadius: BorderRadius.circular(10),
                                 gradient: const LinearGradient(
                                     colors: [
@@ -1332,7 +1329,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                     width: screenSize.width / 3.5 - 1,
                                     height: 200,
                                     decoration: BoxDecoration(
-                                        image: DecorationImage(
+                                        image: const DecorationImage(
                                             image: AssetImage(
                                               "assets/images/main10vishnu.jpg",
                                             ),
@@ -1357,7 +1354,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                           screenSize.height * 1 / 30),
                                       decoration: BoxDecoration(
                                           border: Border.all(
-                                              color: Color(0xecd3301e),
+                                              color: const Color(0xecd3301e),
                                               width: 2),
                                           borderRadius: BorderRadius.circular(
                                               screenSize.height * 1 / 10),
@@ -1379,14 +1376,14 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 40,
                           ),
                           Container(
                             width: screenSize.width / 3.5,
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                    color: Color(0xecd3301e), width: 2),
+                                    color: const Color(0xecd3301e), width: 2),
                                 borderRadius: BorderRadius.circular(10),
                                 gradient: const LinearGradient(
                                     colors: [
@@ -1406,7 +1403,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                     width: screenSize.width / 3.5 - 1,
                                     height: 200,
                                     decoration: BoxDecoration(
-                                        image: DecorationImage(
+                                        image: const DecorationImage(
                                             image: AssetImage(
                                               "assets/images/main11archanashan.jpg",
                                             ),
@@ -1421,7 +1418,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                             end: Alignment.topRight)),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 40,
                                 ),
                                 InkWell(
@@ -1434,7 +1431,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                           screenSize.height * 1 / 30),
                                       decoration: BoxDecoration(
                                           border: Border.all(
-                                              color: Color(0xecd3301e),
+                                              color: const Color(0xecd3301e),
                                               width: 2),
                                           borderRadius: BorderRadius.circular(
                                               screenSize.height * 1 / 10),
@@ -1456,14 +1453,14 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 40,
                           ),
                           Container(
                             width: screenSize.width / 3.5,
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                    color: Color(0xecd3301e), width: 2),
+                                    color: const Color(0xecd3301e), width: 2),
                                 borderRadius: BorderRadius.circular(10),
                                 gradient: const LinearGradient(
                                     colors: [
@@ -1483,7 +1480,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                     width: screenSize.width / 3.5 - 1,
                                     height: 200,
                                     decoration: BoxDecoration(
-                                        image: DecorationImage(
+                                        image: const DecorationImage(
                                             image: AssetImage(
                                               "assets/images/main12nandhana.jpg",
                                             ),
@@ -1533,7 +1530,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       ),
                       Padding(
@@ -1563,7 +1560,7 @@ class _OurPopularCoursesState extends State<OurPopularCourses> {
                                     width: screenSize.width / 3.5 - 1,
                                     height: 200,
                                     decoration: BoxDecoration(
-                                        image: DecorationImage(
+                                        image: const DecorationImage(
                                             image: AssetImage(
                                               "assets/images/gopik_language.JPG",
                                             ),

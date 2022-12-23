@@ -1,5 +1,4 @@
-// ignore_for_file: sort_child_properties_last, must_be_immutable
-import 'dart:developer';
+// ignore_for_file: sort_child_properties_last, must_be_immutable, unused_catch_clause, empty_catches
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,15 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:scipro/model/invoicegenrate_mode.dart';
 import 'package:scipro/model/payment_model.dart';
-import 'package:scipro/pdf/pdf_Api.dart';
+import 'package:scipro/screens/drawer/menu.dart';
 import 'package:slider_button/slider_button.dart';
 import '../widgets/button_Container.dart';
 import '../widgets/newMorphism.dart';
 
 class CheckOutScreen extends StatefulWidget {
+  int invoice = 0;
   final userEmail = FirebaseAuth.instance.currentUser!.email;
   final user = FirebaseAuth.instance.currentUser!.uid;
   final userName = FirebaseAuth.instance.currentUser!.displayName;
@@ -58,12 +58,12 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) async {
     //PDF Seaction>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-   
 
-  
     // After paymentSuccessFull section>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
+
     final userpaymentData = UserPaymentModel(
-      totalprice: widget.totalPrice,
+        randomNumber: '',
+        totalprice: widget.totalPrice,
         useremail: widget.userEmail.toString(),
         userName: widget.userName.toString(),
         courseid: widget.courseID,
@@ -228,19 +228,20 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   baseColor: Colors.blue,
                   backgroundColor: const Color.fromARGB(255, 26, 32, 44),
                   action: () async {
+                    double ttotalPrice = double.parse(widget.totalPrice);
                     double paymentPrice = 1 * 100;
                     // Get.off(PaymentScreen());
                     //
                     var options = {
-                      'key': 'rzp_test_4H63BqbBLQlmNQ',
+                      'key': 'rzp_live_WkqZiZtSI6LGQ9',
                       //amount will be multiple of 100
                       'amount': paymentPrice.toString(), //so its pay 500
-                      'name': '',
+                      'name': 'VECTOR WIND',
                       'description': 'SciPro',
                       'timeout': 300, // in seconds
                       'prefill': {
                         'contact': '9544782189',
-                        'email': 'leptonscipro@gmail.com'
+                        'email': 'binojkumarvc@gmail.com'
                       }
                     };
 

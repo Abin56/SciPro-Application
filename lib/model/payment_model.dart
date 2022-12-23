@@ -1,17 +1,12 @@
 //     final UserPaymentModel = UserPaymentModelFromJson(jsonString);
-
-// ignore_for_file: file_names
-
+// ignore_for_file: file_names, non_constant_identifier_names, unused_local_variable, camel_case_types
 import 'dart:convert';
 import 'dart:developer';
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:scipro/screens/home_screen.dart';
-
-import '../pdf/pdf_scrren.dart';
+import 'package:scipro/pdf_section/payment_sucessfull.dart';
+import 'package:scipro/pdf_section/pdf.dart';
 
 UserPaymentModel UserPaymentModelFromJson(String str) =>
     UserPaymentModel.fromJson(json.decode(str));
@@ -20,13 +15,15 @@ String UserPaymentModelToJson(UserPaymentModel data) =>
     json.encode(data.toJson());
 
 class UserPaymentModel {
-  UserPaymentModel(
-      {required this.useremail,
-      required this.userName,
-      required this.courseid,
-      required this.uid,
-      required this.courseName,
-      required this.totalprice});
+  UserPaymentModel({
+    required this.useremail,
+    required this.userName,
+    required this.courseid,
+    required this.uid,
+    required this.courseName,
+    required this.totalprice,
+    required this.randomNumber,
+  });
   String userName;
 
   String useremail;
@@ -34,6 +31,7 @@ class UserPaymentModel {
   String uid;
   String courseName;
   String totalprice;
+  String randomNumber;
 
   factory UserPaymentModel.fromJson(Map<String, dynamic> json) =>
       UserPaymentModel(
@@ -42,7 +40,8 @@ class UserPaymentModel {
         courseid: json["courseid"] ?? '',
         uid: json["uid"] ?? '',
         courseName: json["courseName"] ?? '',
-        totalprice: json["totalprice"] ?? '',
+        totalprice: json["totalprice"],
+        randomNumber: json["randomNumber"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
@@ -52,6 +51,7 @@ class UserPaymentModel {
         "uid": uid,
         "courseName": courseName,
         "totalprice": totalprice,
+        "randomNumber": randomNumber,
       };
 }
 
@@ -66,9 +66,15 @@ class UserAddressAddToFireBase {
           .collection("UserPaymentModel")
           .doc(currentUser)
           .set(productModel.toJson())
-          .then((value) => Get.to(HomeScreen()));
+          .then((value) => Get.to(PaymentSucessfullScreen(
+                customerName: productModel.userName,
+                email: productModel.useremail,
+                purchasingModel: productModel.courseName,
+                price: productModel.totalprice,
+              )
+              ));
     } on FirebaseException catch (e) {
-      // log('Error ${e.message.toString()}');
+      log('Error ${e.message.toString()}');
     }
   }
 }

@@ -1,12 +1,12 @@
+// ignore_for_file: non_constant_identifier_names, duplicate_ignore, empty_catches, unused_element
+
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scipro/screens/drawer/menu.dart';
 import 'package:scipro/student_screens/pages/Live_Courses/live_Courses_list.dart';
 import 'package:scipro/student_screens/pages/Record_Courses/recorded_courses.dart';
 
 import '../../signin/g_signin.dart';
-import '../../signin/student_faculty_login_screen.dart';
 
 class MyHeaderDrawer extends StatelessWidget {
   const MyHeaderDrawer({Key? key}) : super(key: key);
@@ -96,7 +96,7 @@ Widget MyDrawerList(context) {
       await auth.signOut().then((value) => {
             Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => Gsignin()),
+                MaterialPageRoute(builder: (context) => const Gsignin()),
                 (route) => false)
           });
     } catch (e) {}
@@ -107,7 +107,7 @@ Widget MyDrawerList(context) {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("Error"),
+            title: const Text("Error"),
             content: Text(e.toString()),
           );
         });
@@ -133,15 +133,15 @@ Widget MyDrawerList(context) {
             currentPage == DrawerSections.setting ? true : false, () {
           termsAndConditions(context);
         }),
-        MenuItem(4, "Share", Icons.share,
-            currentPage == DrawerSections.share ? true : false, () async {
-          // await  Share.share('https://play.google.com/store/apps/details?id=in.brototype.BrotoPlayer');
-        }),
-        MenuItem(6, "Contact us", Icons.contact_mail_outlined,
+        // MenuItem(4, "Share", Icons.share,
+        //     currentPage == DrawerSections.share ? true : false, () async {
+        //   // await  Share.share('https://play.google.com/store/apps/details?id=in.brototype.BrotoPlayer');
+        // }),
+        MenuItem(4, "Contact us", Icons.contact_mail_outlined,
             currentPage == DrawerSections.contact ? true : false, () {
           contactus(context);
         }),
-        MenuItem(7, "About", Icons.account_box_outlined,
+        MenuItem(5, "About", Icons.account_box_outlined,
             currentPage == DrawerSections.about ? true : false, () {
           showAboutDialog(
               context: context,
@@ -157,7 +157,7 @@ Widget MyDrawerList(context) {
                     'SCI PRO is a Education App created by VECTORWIND-TECHSYSTEMS PRIVATE LIMITED.')
               ]);
         }),
-        MenuItem(8, "Logout", Icons.logout,
+        MenuItem(6, "Logout", Icons.logout,
             currentPage == DrawerSections.dashboard ? true : false, () {
           signOut(context);
         }),

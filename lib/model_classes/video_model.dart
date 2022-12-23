@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 
 class Video{
   final String name;

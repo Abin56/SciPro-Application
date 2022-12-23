@@ -1,9 +1,11 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
 class TopBarContents extends StatefulWidget {
   final double opacity;
 
-  TopBarContents(this.opacity);
+  const TopBarContents(this.opacity, {super.key});
 
   @override
   _TopBarContentsState createState() => _TopBarContentsState();
@@ -30,7 +32,7 @@ class _TopBarContentsState extends State<TopBarContents> {
       child: Container(
         color: Colors.red.withOpacity(widget.opacity),
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child:
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -58,7 +60,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.phone,color: Colors.red,),
+                                  const Icon(Icons.phone,color: Colors.red,),
                                   Text(
                                     '+91 9048900024',
                                     style: TextStyle(
@@ -69,7 +71,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               Visibility(
                                 maintainAnimation: true,
                                 maintainState: true,
@@ -100,7 +102,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                               Row(
 
                                 children: [
-                                  Icon(Icons.mail,color: Colors.red,),
+                                  const Icon(Icons.mail,color: Colors.red,),
                                   Text(
                                     'info@scipro.in',
                                     style: TextStyle(
@@ -111,7 +113,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               Visibility(
                                 maintainAnimation: true,
                                 maintainState: true,

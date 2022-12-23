@@ -1,15 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:scipro/screens/hybrid_courses.dart';
-import 'package:scipro/screens/live_classroom.dart';
 import 'package:scipro/screens/my_home_page.dart';
 import 'package:scipro/student_screens/pages/Live_Courses/live_Courses_list.dart';
 import 'package:scipro/student_screens/pages/Record_Courses/recorded_courses.dart';
-import 'package:scipro/utils/menudriven.dart';
-import 'package:scipro/video_player/videoplayer_firebase.dart';
-import '../getx/naviagtion_bar.dart';
-import '../utils/app_colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../main.dart';
 import 'drawer/drawer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -43,25 +42,26 @@ class _HomeScreenState extends State<HomeScreen> {
   //   currentIndex = index;
 
   @override
-  void initState() {}
-
-  // TODO: implement initState
-  // super.initState();
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    setSeenonBoard();
     return Scaffold(
       appBar: AppBar(
-        title: Text("SCIPRO"),
+        title: const Text("SCIPRO"),
       ),
       body: pages[_page],
       bottomNavigationBar: Container(
-        height: 73,
+        height: 71,
         decoration: BoxDecoration(
           // color: Colors.white,
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
           border: Border.all(color: Colors.white.withOpacity(0.13)),
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomCenter,
             colors: [
@@ -123,12 +123,18 @@ class _HomeScreenState extends State<HomeScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              MyHeaderDrawer(),
+              const MyHeaderDrawer(),
               MyDrawerList(context),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Future setSeenonBoard() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    seenonboard = await prefs.setBool('seenonboard', true);
+    log(seenonboard.toString());
   }
 }

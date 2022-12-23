@@ -1,15 +1,9 @@
-import 'dart:math';
-
+// ignore_for_file: unnecessary_string_interpolations
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:scipro/model/live_course_model.dart';
-import 'package:scipro/payment_RazorPay/payment_screen.dart';
-import 'package:scipro/student_screens/pages/Live_Courses/live_Course_Details.dart';
-import 'package:scipro/student_screens/pages/Record_Courses/recorded_courses_Details.dart';
 import 'package:scipro/widgets/button_Container.dart';
 
 import 'new_rec_course_details.dart';
@@ -28,7 +22,7 @@ class RecordedCoursesListScreen extends StatelessWidget {
       backgroundColor: const Color.fromARGB(255, 36, 44, 59),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text('Select your plan'),
+        title: const Text('Select your plan'),
       ),
       body: StreamBuilder(
           stream: FirebaseFirestore.instance

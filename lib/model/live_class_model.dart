@@ -1,17 +1,15 @@
 //     final LiveCoursePaymentModel = LiveCoursePaymentModelFromJson(jsonString);
 
-// ignore_for_file: file_names
+// ignore_for_file: file_names, non_constant_identifier_names, unused_local_variable
 
 import 'dart:convert';
-import 'dart:developer';
-import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:scipro/screens/home_screen.dart';
 
-import '../getx/naviagtion_bar.dart';
+import '../pdf_section/payment_sucessfull.dart';
 
 LiveCoursePaymentModel LiveCoursePaymentModelFromJson(String str) =>
     LiveCoursePaymentModel.fromJson(json.decode(str));
@@ -27,6 +25,8 @@ class LiveCoursePaymentModel {
     required this.uid,
     required this.courseName,
     required this.courseTime,
+    required this.totalPrice,
+      required this.roomID,
   });
 
   String useremail;
@@ -34,8 +34,9 @@ class LiveCoursePaymentModel {
   String courseid;
   String uid;
   String courseName;
-    String courseTime;
-
+  String courseTime;
+  String totalPrice;
+  String roomID;
   factory LiveCoursePaymentModel.fromJson(Map<String, dynamic> json) =>
       LiveCoursePaymentModel(
         useremail: json["useremail"] ?? '',
@@ -43,7 +44,9 @@ class LiveCoursePaymentModel {
         courseid: json["courseid"] ?? '',
         uid: json["uid"] ?? '',
         courseName: json["courseName"] ?? '',
-             courseTime: json["courseTime"] ?? '',
+        courseTime: json["courseTime"] ?? '',
+        totalPrice: json["courseTime"] ?? '',
+                roomID: json["roomID"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
@@ -52,9 +55,15 @@ class LiveCoursePaymentModel {
         "courseid": courseid,
         "uid": uid,
         "courseName": courseName,
-          "courseTime": courseTime,
+        "courseTime": courseTime,
+        "totalPrice": totalPrice,
+          "roomID": roomID,
       };
 }
+
+
+
+
 
 class LivePaymentStatusAddToFireBase {
   final currentUser = FirebaseAuth.instance.currentUser!.uid;
@@ -66,7 +75,12 @@ class LivePaymentStatusAddToFireBase {
           .collection("LiveCoursePaymentModel_live")
           .doc(currentUser)
           .set(productModel.toJson())
-          .then((value) => Get.to(HomeScreen()));
+          .then((value) => Get.to(Get.to(PaymentSucessfullScreen(
+                customerName: productModel.userName,
+                email: productModel.useremail,
+                purchasingModel: productModel.courseName,
+                price: productModel.totalPrice,
+              ))));
     } on FirebaseException catch (e) {
       // log('Error ${e.message.toString()}');
     }

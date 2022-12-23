@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:scipro/signin/google_Auth.dart';
-
-import '../methods/auth_methods.dart';
 import '../widgets/custom_button.dart';
 
 class Gsignin extends StatefulWidget {
@@ -13,7 +10,7 @@ class Gsignin extends StatefulWidget {
 }
 
 class _GsigninState extends State<Gsignin> {
-  final AuthMethods _authMethods = AuthMethods();
+  // final AuthMethods _authMethods = AuthMethods();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

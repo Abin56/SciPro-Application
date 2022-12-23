@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyClassrom extends StatefulWidget {
@@ -13,15 +12,13 @@ class _MyClassromState extends State<MyClassrom> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar:AppBar(
-        title: Text("Subscribed Courses"),
+        title: const Text("Subscribed Courses"),
         ),
         body:
         Center(
           child: Column(
-          children:[
-            Container(
-            child: Text("Subscribed Live Courses"),
-            ),
+          children:const [
+            Text("Subscribed Live Courses"),
         ])
         )
     );

@@ -1,15 +1,7 @@
 //     final LiveCourseAddModel = LiveCourseAddModelFromJson(jsonString);
 
-// ignore_for_file: file_names
-
+// ignore_for_file: file_names, non_constant_identifier_names
 import 'dart:convert';
-import 'dart:developer';
-import 'dart:math';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 LiveCourseAddModel LiveCourseAddModelFromJson(String str) =>
     LiveCourseAddModel.fromJson(json.decode(str));
@@ -27,6 +19,7 @@ class LiveCourseAddModel {
     required this.courseID,
     required this.postedDate,
     required this.postedTime,
+        required this.roomID,
   });
 
   String facultyName;
@@ -37,6 +30,7 @@ class LiveCourseAddModel {
   String courseID;
   String postedDate;
   String postedTime;
+    String roomID;
 
   factory LiveCourseAddModel.fromJson(Map<String, dynamic> json) =>
       LiveCourseAddModel(
@@ -48,6 +42,7 @@ class LiveCourseAddModel {
         courseID: json["courseID"] ?? '',
         postedDate: json["postedDate"] ?? '',
         postedTime: json["postedTime"] ?? '',
+                roomID: json["roomID"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
@@ -59,6 +54,7 @@ class LiveCourseAddModel {
         "courseID": courseID,
         "postedDate": postedDate,
         "postedTime": postedTime,
+         "roomID": roomID,
       };
 }
 

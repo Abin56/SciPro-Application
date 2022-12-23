@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,8 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:scipro/screens/home_screen.dart';
-import 'package:scipro/screens/my_home_page.dart';
 import 'package:scipro/signin/student_faclty_profilecreation.dart';
+import 'package:scipro/signin/student_faculty_login_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../splash_screen/on_boarding.dart';
 
 class GoogleSiginController {
   final FirebaseAuth firebase = FirebaseAuth.instance;
@@ -56,7 +61,17 @@ class GoogleSiginController {
           'phoneNumber': value.user!.phoneNumber,
           'photoURL': value.user!.photoURL,
           'isBlocked': false,
-        }).then((value) => Get.offAll( StudentandFacultyCreationPage()));
+        }).then((value) async {
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          bool? isOnBoard = prefs.getBool('seenonboard');
+          if (isOnBoard == true) {
+            log("TRUE");
+            Get.offAll(StudentandFacultyLoginScreen());
+          } else {
+            log("FALSE");
+            Get.offAll(Onboardingpage());
+          }
+        });
       });
       //   .then((value) async {
       // final UserModel data = UserModel(

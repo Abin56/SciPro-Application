@@ -1,5 +1,6 @@
+// ignore_for_file: library_private_types_in_public_api, unnecessary_string_interpolations
+
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -23,6 +24,8 @@ final List<String> subtitles = [
 ];
 
 class CurrentCourseSlider extends StatefulWidget {
+  const CurrentCourseSlider({super.key});
+
   @override
   _CurrentCourseSliderState createState() => _CurrentCourseSliderState();
 }
@@ -38,9 +41,9 @@ class _CurrentCourseSliderState extends State<CurrentCourseSlider> {
       child: Column(
         children: [
           Container(
-            margin: EdgeInsets.only(top: 10.0),
-            child: Text(
-              "HOT PICKS",
+            margin: const EdgeInsets.only(top: 10.0),
+            child: const Text(
+              "Our Specialities",
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 18,
@@ -77,12 +80,12 @@ class _CurrentCourseSliderState extends State<CurrentCourseSlider> {
                         (item) => Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
-                            margin: EdgeInsets.only(
+                            margin: const EdgeInsets.only(
                               top: 10.0,
                               bottom: 10.0,
                             ),
                             child: ClipRRect(
-                              borderRadius: BorderRadius.all(
+                              borderRadius: const BorderRadius.all(
                                 Radius.circular(30.0),
                               ),
                               child: Column(
@@ -133,12 +136,13 @@ class _CurrentCourseSliderState extends State<CurrentCourseSlider> {
               return Container(
                 width: 10.0.w,
                 height: 10.0.h,
-                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: _currentIndex == index
-                      ? Color.fromRGBO(0, 0, 0, 0.8)
-                      : Color.fromRGBO(0, 0, 0, 0.3),
+                      ? const Color.fromRGBO(0, 0, 0, 0.8)
+                      : const Color.fromRGBO(0, 0, 0, 0.3),
                 ),
               );
             }).toList(),
