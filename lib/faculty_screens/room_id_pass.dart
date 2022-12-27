@@ -1,44 +1,43 @@
 import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
-import 'package:scipro/faculty_screens/list_of_courses.dart';
+import 'package:scipro/faculty_screens/new_waiting_room.dart';
 import 'package:scipro/faculty_screens/waiting_room.dart';
-import 'package:scipro/signin/student_faculty_login_screen.dart';
-import 'package:scipro/widgets/button_Container.dart';
 
-class FacultyLoginIdScreen extends StatefulWidget {
-  const FacultyLoginIdScreen({super.key});
+import '../widgets/button_Container.dart';
 
-  @override
-  State<FacultyLoginIdScreen> createState() => _FacultyLoginIdScreenState();
-}
-
-class _FacultyLoginIdScreenState extends State<FacultyLoginIdScreen> {
-  @override
-  void initState() {
-    super.initState();
-    getFacultyId();
-    getPassword();
-  }
-
-  String _facultyId = "loading";
-  String _password = "loading";
+class RoomIDandPassWord extends StatelessWidget {
+  String facultyId;
+  String password;
+  bool onpressed;
+  String id;
   TextEditingController idContoller = TextEditingController();
 
   TextEditingController passwordContoller = TextEditingController();
+  RoomIDandPassWord(
+      {required this.onpressed,
+      required this.facultyId,
+      required this.id,
+      required this.password,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
-    log("facaluty id and password screen section");
+   
     return Scaffold(
       body: SafeArea(
-        child: ListView(
+          child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            LottieBuilder.asset('assets/images/ld_password_lottie.json'),
+            const SizedBox(
+              height: 20,
+            ),
             TextField(
               controller: idContoller,
               decoration: InputDecoration(
@@ -46,7 +45,7 @@ class _FacultyLoginIdScreenState extends State<FacultyLoginIdScreen> {
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20))),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             TextField(
@@ -56,16 +55,18 @@ class _FacultyLoginIdScreenState extends State<FacultyLoginIdScreen> {
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20))),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             GestureDetector(
-              onTap: () async {
-                Get.to(FacultyLiveCourseList());
-                // if (idContoller.text.trim() == 'SCIPRO#123' &&
-                //     passwordContoller.text.trim() == 'faculty123') {
-                //   Get.to(FacultyLiveCourseList());
-                //   log('activated');
+              onTap: () {
+            
+
+                Get.to(NewWaitingRoomScreen(id: id,));
+
+                // if (idContoller.text.trim() == facultyId &&
+                //     passwordContoller.text.trim() == password) {
+                //   Get.to(NewWaitingRoomScreen());
                 // } else {
                 //   Get.snackbar("Alert", '',
                 //       backgroundColor: Colors.red,
@@ -97,27 +98,7 @@ class _FacultyLoginIdScreenState extends State<FacultyLoginIdScreen> {
             )
           ],
         ),
-      ),
+      )),
     );
-  }
-
-  void getFacultyId() async {
-    var vari = await FirebaseFirestore.instance
-        .collection("FacultyProfiles")
-        .doc()
-        .get();
-    setState(() {
-      _facultyId = vari.data()!['facultyid'];
-    });
-  }
-
-  void getPassword() async {
-    var vari = await FirebaseFirestore.instance
-        .collection("FacultyProfiles")
-        .doc()
-        .get();
-    setState(() {
-      _password = vari.data()!['facultyPassword'];
-    });
   }
 }

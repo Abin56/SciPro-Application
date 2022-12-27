@@ -26,7 +26,7 @@ class LiveCoursePaymentModel {
     required this.courseName,
     required this.courseTime,
     required this.totalPrice,
-      required this.roomID,
+    required this.roomID,
   });
 
   String useremail;
@@ -46,7 +46,7 @@ class LiveCoursePaymentModel {
         courseName: json["courseName"] ?? '',
         courseTime: json["courseTime"] ?? '',
         totalPrice: json["courseTime"] ?? '',
-                roomID: json["roomID"] ?? '',
+        roomID: json["roomID"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
@@ -57,13 +57,9 @@ class LiveCoursePaymentModel {
         "courseName": courseName,
         "courseTime": courseTime,
         "totalPrice": totalPrice,
-          "roomID": roomID,
+        "roomID": roomID,
       };
 }
-
-
-
-
 
 class LivePaymentStatusAddToFireBase {
   final currentUser = FirebaseAuth.instance.currentUser!.uid;
