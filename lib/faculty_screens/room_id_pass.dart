@@ -28,7 +28,6 @@ class RoomIDandPassWord extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
       body: SafeArea(
           child: Center(
@@ -60,25 +59,27 @@ class RoomIDandPassWord extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-            
+                // Get.to(NewWaitingRoomScreen(
+                //   id: id,
+                // ));
 
-                Get.to(NewWaitingRoomScreen(id: id,));
-
-                // if (idContoller.text.trim() == facultyId &&
-                //     passwordContoller.text.trim() == password) {
-                //   Get.to(NewWaitingRoomScreen());
-                // } else {
-                //   Get.snackbar("Alert", '',
-                //       backgroundColor: Colors.red,
-                //       colorText: Colors.white,
-                //       messageText: Text(
-                //         'Wrong Password',
-                //         style: GoogleFonts.montserrat(
-                //             color: Colors.white,
-                //             fontSize: 12,
-                //             fontWeight: FontWeight.w700),
-                //       ));
-                // }
+                if (idContoller.text.trim() == facultyId &&
+                    passwordContoller.text.trim() == password) {
+                  Get.to(NewWaitingRoomScreen(
+                    id: id,
+                  ));
+                } else {
+                  Get.snackbar("Alert", '',
+                      backgroundColor: Colors.red,
+                      colorText: Colors.white,
+                      messageText: Text(
+                        'Wrong Password',
+                        style: GoogleFonts.montserrat(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700),
+                      ));
+                }
               },
               child: ButtonContainerWidget(
                 curving: 30,

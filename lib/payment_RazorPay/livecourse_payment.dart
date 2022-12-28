@@ -20,12 +20,15 @@ class LiveCoursePayment extends StatefulWidget {
   String courseName;
   String courseTime;
   String roomID;
+  String id;
   LiveCoursePayment(
       {required this.totalPrice,
       required this.courseID,
       required this.courseName,
       required this.courseTime,
       required this.roomID,
+        required this.id,
+    
       super.key});
 
   @override
@@ -63,6 +66,7 @@ class _LiveCoursePaymentState extends State<LiveCoursePayment> {
   void _handlePaymentSuccess(PaymentSuccessResponse response) async {
     // After paymentSuccessFull section>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
     final userpaymentData = LiveCoursePaymentModel(
+      id: widget.id,
         roomID: widget.roomID,
         totalPrice: widget.totalPrice,
         courseTime: widget.courseTime,
@@ -237,7 +241,7 @@ class _LiveCoursePaymentState extends State<LiveCoursePayment> {
                     // Get.off(PaymentScreen());
                     //
                     var options = {
-                      'key': 'rzp_test_4H63BqbBLQlmNQ',
+                      'key': 'rzp_live_WkqZiZtSI6LGQ9',
                       //amount will be multiple of 100
                       'amount': paymentPrice.toString(), //so its pay 500
                       'name': 'VECTOR WIND',

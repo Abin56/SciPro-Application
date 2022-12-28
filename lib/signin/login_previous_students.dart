@@ -40,7 +40,10 @@ class PreviousStudentCourseList extends StatelessWidget {
                 if (docData.isNotEmpty) {
                   log("set");
                   Get.to(StudentWaitingRoom(
-                      roomID: '', courseName: "JSALiveCourse", time: ""));
+                      id: 'h4X84nKUWxWBvoCn1S6j',
+                      roomID: '',
+                      courseName: "JSALiveCourse",
+                      time: ""));
                 } else {
                   final currentname =
                       FirebaseAuth.instance.currentUser!.displayName;
@@ -142,7 +145,10 @@ class PreviousStudentCourseList extends StatelessWidget {
                 if (docData.isNotEmpty) {
                   log("set");
                   Get.to(StudentWaitingRoom(
-                      roomID: '', courseName: "JLALiveCourse", time: ""));
+                      id: 'e0hyerGmdEAHf2rwNYYC',
+                      roomID: '',
+                      courseName: "JLALiveCourse",
+                      time: ""));
                 } else {
                   final currentname =
                       FirebaseAuth.instance.currentUser!.displayName;

@@ -17,6 +17,7 @@ class LiveCourseDetailScreen extends StatelessWidget {
   String courseId;
   String time;
   String date;
+  String id;
   String roomID;
   LiveCourseDetailScreen(
       {required this.coursetitle,
@@ -27,6 +28,7 @@ class LiveCourseDetailScreen extends StatelessWidget {
       required this.date,
       required this.time,
       required this.roomID,
+          required this.id,
       super.key});
 
   @override
@@ -215,6 +217,8 @@ class LiveCourseDetailScreen extends StatelessWidget {
             GestureDetector(
               onTap: () async {
                 Get.to(LiveCoursePayment(
+             id: id,
+
                     roomID: roomID,
                     courseTime: time,
                     courseName: coursetitle,

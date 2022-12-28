@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:scipro/model/live_class_model.dart';
 import 'package:scipro/screens/hybrid_courses.dart';
 import 'package:scipro/student_screens/Student_waiting_room.dart';
 import 'package:scipro/student_screens/pages/Live_Courses/live_Courses_list.dart';
@@ -26,28 +27,7 @@ class LiveCourseListScreen extends StatefulWidget {
 }
 
 class _LiveCourseListScreenState extends State<LiveCourseListScreen> {
-  // String _userCourse = "";
   @override
-  // void initState() {
-  //   // checkUserCourseList();
-
-  //   super.initState();
-  // }
-
-  //
-  // void checkUserCourseList() async {
-  //   log('Calling>>>>>>>>>>>>>>>>');
-  //   final user = FirebaseAuth.instance.currentUser!.uid;
-  //   var checking = await FirebaseFirestore.instance
-  //       .collection('UserPaymentModel')
-  //       .doc(user)
-  //       .get();
-  //   setState(() {
-  //     _userCourse = checking.data()!['courseid'];
-  //     log(_userCourse);
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!.uid;
@@ -59,7 +39,7 @@ class _LiveCourseListScreenState extends State<LiveCourseListScreen> {
       body: SafeArea(
         child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: StreamBuilder<QuerySnapshot>(
+            child: StreamBuilder(
               stream: FirebaseFirestore.instance
                   .collection("LiveCoursePaymentModel_live")
                   .snapshots(),
@@ -71,21 +51,17 @@ class _LiveCourseListScreenState extends State<LiveCourseListScreen> {
                     : ListView.separated(
                         itemCount: snapshots.data!.docs.length,
                         itemBuilder: (context, index) {
-                          var data = snapshots.data!.docs[index].data()
-                              as Map<String, dynamic>;
-                          log('LoadingData>>>>>>>>>>>>>>>>>>>>>>>>>${data.toString()}');
+                          var data = LiveCoursePaymentModel.fromJson(
+                              snapshots.data!.docs[index].data());
 
-                          if (user == data['uid']) {
-                            log('UIDDDDDDD>>>>>>>>>>>>>>>>>>>>>>>>>${data['uid'].toString()}');
+                          if (snapshots.hasData) {
                             return GestureDetector(
                               onTap: () {
-                                log(data['courseTime']);
-
                                 Get.to(StudentWaitingRoom(
-                                  roomID:data['roomID'] ,
-                                  courseName: data['courseName'],
-                                  time: data['courseTime'],
-                                ));
+                                    id: data.id,
+                                    roomID: data.roomID,
+                                    courseName: data.courseName,
+                                    time: data.courseTime));
                               },
                               child: ButtonContainerWidget(
                                 curving: 30,
@@ -94,7 +70,7 @@ class _LiveCourseListScreenState extends State<LiveCourseListScreen> {
                                 width: double.infinity,
                                 child: Center(
                                     child: Text(
-                                  data['courseName'],
+                                  data.courseName,
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,

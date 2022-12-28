@@ -61,23 +61,23 @@ class _FacultyLoginIdScreenState extends State<FacultyLoginIdScreen> {
             ),
             GestureDetector(
               onTap: () async {
-                Get.to(FacultyLiveCourseList());
-                // if (idContoller.text.trim() == 'SCIPRO#123' &&
-                //     passwordContoller.text.trim() == 'faculty123') {
-                //   Get.to(FacultyLiveCourseList());
-                //   log('activated');
-                // } else {
-                //   Get.snackbar("Alert", '',
-                //       backgroundColor: Colors.red,
-                //       colorText: Colors.white,
-                //       messageText: Text(
-                //         'Wrong Password',
-                //         style: GoogleFonts.montserrat(
-                //             color: Colors.white,
-                //             fontSize: 12,
-                //             fontWeight: FontWeight.w700),
-                //       ));
-                // }
+                // Get.to(FacultyLiveCourseList());
+                if (idContoller.text.trim() == 'SCIPRO#123' &&
+                    passwordContoller.text.trim() == 'faculty123') {
+                  Get.to(FacultyLiveCourseList());
+                  log('activated');
+                } else {
+                  Get.snackbar("Alert", '',
+                      backgroundColor: Colors.red,
+                      colorText: Colors.white,
+                      messageText: Text(
+                        'Wrong Password',
+                        style: GoogleFonts.montserrat(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700),
+                      ));
+                }
               },
               child: ButtonContainerWidget(
                 curving: 30,

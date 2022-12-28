@@ -46,6 +46,7 @@ class LiveCoursesListScreen extends StatelessWidget {
                             GestureDetector(
                               onTap: () async {
                                 await Get.to(LiveCourseDetailScreen(
+                                  id: data.id,
                                   roomID: data.roomID,
                                     coursetitle: data.courseTitle,
                                     faculty: data.facultyName,

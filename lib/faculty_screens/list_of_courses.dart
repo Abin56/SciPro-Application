@@ -44,7 +44,11 @@ class FacultyLiveCourseList extends StatelessWidget {
                             height: 200,
                             width: double.infinity,
                             child: Center(
-                              child: Text(data.courseTitle),
+                              child: Text(
+                                data.courseTitle,
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
                         );

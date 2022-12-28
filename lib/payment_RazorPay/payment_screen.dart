@@ -233,7 +233,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                     // Get.off(PaymentScreen());
                     //
                     var options = {
-                      'key': 'rzp_test_4H63BqbBLQlmNQ',
+                      'key': 'rzp_live_WkqZiZtSI6LGQ9',
                       //amount will be multiple of 100
                       'amount': paymentPrice.toString(), //so its pay 500
                       'name': 'VECTOR WIND',
